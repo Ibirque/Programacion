@@ -4,17 +4,12 @@
  */
 package proyectos.ibirque;
 
-/**
- *
- * @author Ibir
- */
+
 public class ProyectoBaseIbir {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }
