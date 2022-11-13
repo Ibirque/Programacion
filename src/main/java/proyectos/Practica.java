@@ -1,5 +1,5 @@
 
-package com.mycompany.clasesdejava;
+package proyectos;
 
 
 public class Practica {

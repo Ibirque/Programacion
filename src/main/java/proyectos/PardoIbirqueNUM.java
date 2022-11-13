@@ -1,4 +1,4 @@
-package com.mycompany.clasesdejava;
+package proyectos;
 
 import java.util.Scanner;
 

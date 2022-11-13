@@ -1,4 +1,4 @@
-package com.mycompany.clasesdejava;
+package proyectos;
 
 import java.text.Normalizer;
 import java.util.Scanner;
