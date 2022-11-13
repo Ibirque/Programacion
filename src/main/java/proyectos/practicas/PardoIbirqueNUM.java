@@ -1,4 +1,4 @@
-package proyectos;
+package proyectos.practicas;
 
 import java.util.Scanner;
 

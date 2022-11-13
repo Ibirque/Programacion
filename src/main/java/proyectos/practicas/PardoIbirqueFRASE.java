@@ -1,4 +1,4 @@
-package proyectos;
+package proyectos.practicas;
 
 import java.text.Normalizer;
 import java.util.Scanner;
