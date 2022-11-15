@@ -50,6 +50,8 @@ public class ProyectoBaseIbir {
             }
             System.out.println("");
         }
+        
+        
 
     }
 }
