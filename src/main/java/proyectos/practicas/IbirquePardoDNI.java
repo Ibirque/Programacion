@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject1;
+package proyectos.practicas;
 
 import java.util.Scanner;
 
