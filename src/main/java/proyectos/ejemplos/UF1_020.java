@@ -21,7 +21,7 @@ número de alumnos y a continuación se creará el array.
 Se realizan 3 recorridos sobre el array, el primero para asignar a cada elemento las notas introducidas por
 teclado, el segundo para sumarlas y calcular la media y el tercero para mostrar los alumnos con notas
 superiores a la media.
- * @author javie
+ * @author javier
  */
 public class UF1_020 {
 
