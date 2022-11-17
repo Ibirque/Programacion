@@ -59,6 +59,5 @@ public class Uf_020BisIbir {
                 System.out.println("El alumno " + (j + 1) + " con nota " + array[j] + " tiene una nota superior a la media");
             }
         }
-
     }
 }
