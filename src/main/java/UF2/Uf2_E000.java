@@ -1,5 +1,5 @@
 
-package proyectos.ibirque;
+package UF2;
 
 
 public class Uf2_E000 {
