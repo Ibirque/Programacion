@@ -25,7 +25,8 @@ public class E001variableGlobal {
         ordenarLista();
         imprimirLista();
     }
-    //Metodo para leer datos de la lista 
+    //Metodo para leer datos de la lista
+    //lo podemos llamar desde inicio que es nuestro nuevo metodo principal
     public void leerLista(){
         
     }
