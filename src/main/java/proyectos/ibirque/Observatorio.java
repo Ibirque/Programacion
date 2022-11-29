@@ -4,8 +4,14 @@ package proyectos.ibirque;
 
 public class Observatorio {
 
-    //float array[7][52]
     //declaramos variables
+    private static final int SEMANAS = 52;
+    private float[] temperaturas = new float[SEMANAS*7];
+    //float array[7][52]
+    private int newTemperaturas = 0;
+    private int dia = 1;
+    private int mes = 1;
+    
     
     public static void main(String[] args) {
         
@@ -27,6 +33,20 @@ public class Observatorio {
         //validacion
     }
 
+    public void mostrarMedia(){
+        
+    }
+     
+    public void mostrarMaxima(){
+        
+    }
+    
+    public void finalizar(){
+        
+    }
+    public void leerPorTeclado(){
+        
+    }
     //comprobar el dia de la semana
         //lun=1, mar=2 ... dom = 7
         //comprobar el null
