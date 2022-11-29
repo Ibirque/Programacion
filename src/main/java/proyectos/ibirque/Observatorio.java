@@ -11,6 +11,7 @@ public class Observatorio {
         
     
     }
+    
 
     //comprobar el dia de la semana
         //lun=1, mar=2 ... dom = 7
@@ -27,12 +28,15 @@ public class Observatorio {
     
     //clase de cierre
 
-    //menu
+    //clase de menu
+      //printar y recoger el input y redireccionar al usuario a la clase correspondiente
+    
+//menu
         //imprimir texto
         //sucesion de system.out.println
         //no tiene que descomponerse mas
     
-    //subproblema 2 - tratar el roden
+    //subproblema 2 - tratar el orden
         //leer orden por teclado
         //entrar registro de temp
         //mostrar temp media
