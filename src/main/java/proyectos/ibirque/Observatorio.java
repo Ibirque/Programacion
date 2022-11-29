@@ -5,13 +5,27 @@ package proyectos.ibirque;
 public class Observatorio {
 
     //float array[7][52]
+    //declaramos variables
     
     public static void main(String[] args) {
         
-        
+        //Temperaturas programa = new Temperaturas
+        Observatorio programa = new Observatorio();      
+        programa.inicio();
     
     }
     
+    public void inicio(){
+        //problema general
+    }
+    
+    public void mostrarMenu(){
+        
+    }
+    
+    public void gestionarMenu(){
+        //validacion
+    }
 
     //comprobar el dia de la semana
         //lun=1, mar=2 ... dom = 7
