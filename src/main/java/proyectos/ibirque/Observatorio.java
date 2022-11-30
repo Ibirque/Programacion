@@ -97,5 +97,5 @@ public class Observatorio {
         d. finalizar la ejecucion del programa */                        
     
     
-    
+    //esto es un ejeplo
 }
