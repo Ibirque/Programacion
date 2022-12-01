@@ -85,6 +85,10 @@ public class Observatorio {
         if(dia > diaMesActual){
             dia = dia - diaMesActual;
             mes++;
+            if(mes >12){
+                mes = 1;
+                dia = 1;
+            }
         }
     }
     
