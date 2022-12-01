@@ -72,7 +72,20 @@ public class Observatorio {
     public void calcularFecha(){
         //¿cuantos dias tiene el ems actual?
         int diaMesActual = 0;
-        if(mes == 2)
+        if(mes == 2){
+            diaMesActual = 28;
+        }else if(mes == 4 || mes == 6 ||mes == 9 || mes == 11 ){
+            diaMesActual = 30;
+        }else{
+            diaMesActual = 31;
+        }
+        
+        dia = dia +7;
+        //cuando cambiamos de mes
+        if(dia > diaMesActual){
+            dia = dia - diaMesActual;
+            mes++;
+        }
     }
     
     public void mostrarFecha() {
@@ -144,7 +157,7 @@ public class Observatorio {
     }
 
     public void calcularMedia() {
-
+        
     }
 
     public void calcularDiferencia() {
