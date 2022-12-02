@@ -24,11 +24,29 @@ public class Temperaturas {
 
     //PRIMER NIVEL DE DESCOMPOSICIÃ“N
     public void mostrarMenu() {
-        System.out.println("");
+        System.out.print("Bienvenido al observatorio");
+        System.out.println("------------------------");
+        System.out.println("[RTS] Temperaturas semanales");
+        System.out.println("[MD] Calcular la media");
+        System.out.println("[DF] Calcular la diferencia maxima");
+        System.out.println("[Fin] Salir");
+        System.out.println("Opcion");
     }
 
     public void tratarOpcion() {
-
+        Scanner entrada = new Scanner(System.in);
+        String opcion = entrada.nextLine();
+        if(opcion.equalsIgnoreCase("RTS")){
+            regTempSemanal();
+        }else if(opcion.equalsIgnoreCase("MD")){
+            mostrarMedia();
+        }else if(opcion.equalsIgnoreCase("DF")){
+            calcularDiferencia();
+        }else if(opcion.equalsIgnoreCase("FIN")){
+            salir();
+        }else{
+            System.out.println("Opcion incorrecta");
+        }
     }
 
     //SEGUNDO NIVEL
