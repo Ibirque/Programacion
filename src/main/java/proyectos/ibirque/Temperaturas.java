@@ -8,6 +8,7 @@ public class Temperaturas {
     private static final int SEMANAS = 52;
 
     //DeclaraciÃ³n de variables globales
+    private boolean fin = false;
     private int numTemperaturas = 0; //Ã­ndice array
     private float[] temperaturas = new float[SEMANAS * 7];
     private int dia = 1;
@@ -20,11 +21,15 @@ public class Temperaturas {
 
     public void inicio() {
         //problema general
+        while(!fin){
+            mostrarMenu();
+            tratarOpcion();
+        }
     }
 
     //PRIMER NIVEL DE DESCOMPOSICIÃ“N
     public void mostrarMenu() {
-        System.out.print("Bienvenido al observatorio");
+        System.out.println("Bienvenido al observatorio");
         System.out.println("------------------------");
         System.out.println("[RTS] Temperaturas semanales");
         System.out.println("[MD] Calcular la media");
@@ -86,6 +91,7 @@ public class Temperaturas {
 
     public void salir() {
         //salir
+        fin = true;
     }
 
     //TERCER NIVEL
