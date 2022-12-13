@@ -7,8 +7,8 @@ public class Uf2_E005 {
     static int contador = 1;
 
     public static void main(String[] args) {
-        
-        //llamamos a la funcion
+
+        /* //llamamos a la funcion
         duplicarValor();
         duplicarValor();
         duplicarValor();
@@ -19,7 +19,7 @@ public class Uf2_E005 {
         int contadores = 3;
         
         
-        /*IMPORTANTE*/
+        //IMPORTANTE
         //duplicarValores(contadores);
         //System.out.println(duplicarValores(5));
         
@@ -35,23 +35,26 @@ public class Uf2_E005 {
         duplicarValoresArray(lista);
         for(int i = 0; i <3; i++){
             System.out.println(lista[i]);
-        }
-        
+        }*/
+        int contadorx = 1;
+        duplicarValores(contadorx);
+        System.out.println(contadorx);
+
     }
 
     //declaracion del metodo
     public static void duplicarValor() {
         contador = contador * 2;
     }
-    
-    public static int duplicarValores(int x){
-        x  = x *2;
+
+    public static int duplicarValores(int x) {
+        x = x * 2;
         return x;
     }
-    
-    public static void duplicarValoresArray(int[]num){
-        for (int i = 0; i < num.length; i++){
-            num[i] = num[i]*2;
+
+    public static void duplicarValoresArray(int[] num) {
+        for (int i = 0; i < num.length; i++) {
+            num[i] = num[i] * 2;
         }
     }
 
