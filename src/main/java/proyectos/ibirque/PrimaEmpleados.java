@@ -42,7 +42,7 @@ public class PrimaEmpleados {
                 System.out.println("El codi del càrrec ha de ser 'S' o 'N'");
             }
             if (p != 0) {
-                System.out.println("La prima que li correspon a " + nom
+                System.out.println("La prima que li correspon a " + n
                         + " es de " + p + " Euros");
             }
         } else {
