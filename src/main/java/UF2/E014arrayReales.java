@@ -16,7 +16,10 @@ public class E014arrayReales {
     }
     
     public double maximo(double[]lista){
+        //en el caso de que el usuario solo mande un numero, por defecto el maximo va a ser el primero
         double max = lista[0];
+        
+        //ahora comparamos con el resto de numeros en caso de haber mas de uno
         for(int i = 1; i < lista.length; i++){
             if(lista[i] > max){
                 max = lista[i];
