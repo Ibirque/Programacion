@@ -21,8 +21,10 @@ public class E015mediaArray {
             
             //sumatorio = sumatorio + lista[i];
         }
-        sumatorio = sumatorio / lista.length;
-        return sumatorio;
+        //sumatorio = sumatorio / lista.length;
+        //return sumatorio;
+        
+        return sumatorio / lista.length;
     }
 
 }
