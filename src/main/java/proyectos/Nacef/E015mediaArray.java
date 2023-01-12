@@ -10,7 +10,7 @@ public class E015mediaArray {
     public void inicio(){
         int[]valores = {13, 21, 0, 12, 7};
         double resultado = media(valores);
-        System.out.println("La media de los valores es : " + resultado);
+        System.out.println("La media de las notas es : " + resultado);
     }
     
     public double media(int[]lista){
@@ -22,6 +22,8 @@ public class E015mediaArray {
         suma = suma / lista.length;
         return suma;
     }
+    
+   
     
     
     
