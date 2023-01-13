@@ -39,18 +39,24 @@ public class RecogerInputs {
 
         if (entrada.hasNextInt()) {
             x = entrada.nextInt();
-            registroInt(x);
+            //registroInt(x);
+            tueInt = true;
+            return x;
         } else if (entrada.hasNextFloat()) {
             y = entrada.nextFloat();
-            registroFloat(y);
+            //registroFloat(y);
+            tueFloat = true;
+            return y;
         } else if (entrada.hasNextDouble()) {
             z = entrada.nextDouble();
-            registroDouble(z);
+            //registroDouble(z);
+            tueDouble = true;
+            return z;
         } else {
             w = entrada.nextLine();
-            registroString(w);
+            //registroString(w);
+            return w;
         }
-
     }
 
     public int registroInt(int X) {
