@@ -1,5 +1,5 @@
 package proyectos.ibirque;
-
+/*
 import java.util.Scanner;
 
 public class RecogerInputs {
@@ -14,6 +14,7 @@ public class RecogerInputs {
         programa.inicio();
     }
 
+    
     private void inicio() {
         inputUsuarioX();
         if(tueInt){
@@ -88,3 +89,4 @@ public class RecogerInputs {
     }
 
 }
+*/
