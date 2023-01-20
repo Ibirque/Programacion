@@ -25,9 +25,75 @@ public class GRUPOpalabra {
         //LLamamos a las funciones
         //Funcion de juego
         //Funcion de generacion de palabra
-        //Aqui inicia el juego
+        String palabr0 = generarPalabraSecreta();
+        System.out.println(palabr0);
+        //Aqui inicia el juego  
+        do{
+        String preguntar = preguntaTentativa();
+
+        String juego = generarPista(palabr0, preguntar);
+        System.out.println(juego);
+        //quiero atrapar al usuario en un bucle
+        finDeJuego(palabr0, preguntar);
+        }while (!banderaJuego);
     }
 
+    //PRIMER NIVEL DE DESCOMPOSICION
+    //-param entrada -> no
+    //param saiida -> un string de 5 char
+    public String generarPalabraSecreta() {
+        String palabra = "";
+        for (int i = 0; i < 5; i++) {
+            palabra += generador();
+        }
+        return palabra;
+    }
+
+    //PREGUNTAR TENTATIVA
+    //param entrada -> nope
+    //param salida -> String, la tentativa
+    public String preguntaTentativa() {
+        Scanner entrada = new Scanner(System.in);
+        //
+        boolean lecturaOK = false;
+        String tentativa = "";
+        do {
+            System.out.println("Escribe 5 letras");
+            tentativa = entrada.next();
+            tentativa = tentativa.toLowerCase();
+            entrada.nextLine();
+            lecturaOK = comprobarRespuesta(tentativa);
+            if (!lecturaOK) {
+                System.out.println("Esta respuesta no es correcta");
+            }
+        } while (!lecturaOK);
+        return tentativa;
+    }
+
+    //COMPROBAR RESPUESTA
+    //param entrada -->> tiene que tener un string que es tentativa de la funcion preguntaTentativa()
+    //param salida -->> booleano
+    public boolean comprobarRespuesta(String respuesta) {
+        if (respuesta.length() != 5) {
+            //entonces no es correcta
+            //podemos acabar aqui
+            return false;
+        }
+        for (int i = 0; i < respuesta.length(); i++) {
+            //asignar una variable char en la posicion actual
+            char c = respuesta.charAt(i);
+            //buscar c en abc
+            //si devuelve -1, no esta
+            if (-1 == abc.indexOf(c)) {
+                //no es correcta
+                //salimos aqui
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //SEGUNDO NIVEL DE DESCOMPOSICION
     //Parametros de entrada -> no hace falta a menos que tengamos un array anterior
     //Parametros de salida
     public char generador() {
@@ -62,72 +128,23 @@ public class GRUPOpalabra {
         return pista;
     }
 
-    public String generarPalabraSecreta() {
-        String palabra = "";
-        for (int i = 0; i < 5; i++) {
-            palabra += generador();
-        }
-        return palabra;
-    }
-
-    public String preguntaTentativa() {
-        Scanner entrada = new Scanner(System.in);
-        //
-        boolean lecturaOK = false;
-        String tentativa = "";
-        do {
-            System.out.println("Escribe 5 letras");
-            tentativa = entrada.next();
-            tentativa = tentativa.toLowerCase();
-            entrada.nextLine();
-            lecturaOK = comprobarRespuesta(tentativa);
-            if (!lecturaOK) {
-                System.out.println("Esta respuesta no es correcta");
-            }
-        } while (!lecturaOK);
-        return tentativa;
-    }
-
-    public String inputUsuario() {
-        String palabra = "";
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Introduce una palabra de 5 letras, o la palabra salir!");
-        palabra = entrada.nextLine();
-        return palabra;
-    }
-
-    public void funcionPrint(String userInp, String palabraSec) {
-        String[] strAr2 = {" _ ", " _ ", " _ ", " _ ", " _ "};
-        for (int i = 0; i <= 4; i++) {
-            if (userInp.charAt(i) == palabraSec.charAt(i)) {
-                String s = "" + userInp.charAt(i);
-                strAr2[i] = s;
-            }
-
-        }
-    }
-
-    //COMPROBAR RESPUESTA
-    //param entrada -->> tiene que tener un string que es tentativa de la funcion preguntaTentativa()
-    //param salida -->> booleano
-    public boolean comprobarRespuesta(String respuesta) {
-        if (respuesta.length() != 5) {
-            //entonces no es correcta
-            //podemos acabar aqui
-            return false;
-        }
-        for (int i = 0; i < respuesta.length(); i++) {
-            //asignar una variable char en la posicion actual
-            char c = respuesta.charAt(i);
-            //buscar c en abc
-            //si devuelve -1, no esta
-            if (-1 == abc.indexOf(c)) {
-                //no es correcta
-                //salimos aqui
-                return false;
+    public void finDeJuego(String secreto, String respuesta) {
+        
+        short solucion = 0;
+        //si respuesta = secreto, fin del juego
+        //respuesta =/= el juego continua
+        for (int i = 0; i < secreto.length(); i++) {
+            char charSecreto = secreto.charAt(i);
+            char charRespuesta = respuesta.charAt(i);
+            if (charSecreto == charRespuesta) {
+                solucion++;
+                if (solucion == 5) {
+                    System.out.println("Has acertado!");
+                    banderaJuego = true;
+                }
             }
         }
-        return true;
+        
     }
 
 }
