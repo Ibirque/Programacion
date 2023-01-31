@@ -1,5 +1,7 @@
 package proyectos.ibirque;
 
+import java.util.Scanner;
+
 public class PardoIbirque_Spencer {
 
     public static void main(String[] args) {
@@ -22,32 +24,24 @@ public class PardoIbirque_Spencer {
      */
     public void inicio() {
         //System.out.println(3%10);
-        tamaNum(54812);
+        tamaNum("1236");
     }
 
     /*DETERMINAR TAMAÑO*/
-    public int tamaNum(int num) {
+    public int tamaNum(String num) {
+        //Convertir el string a numero
+        int x = Integer.parseInt(num);
+        int numBuffer = x % 10;
+        for (int i = 0; i < num.length() - 1; i++) {
+            //intento dividir entre 10
+            numBuffer = numBuffer % 10;
+            System.out.println(numBuffer);
+        }
 
-        //intento dividir entre 10
-        int numBuffer = num % 10;
-        
-        short potencia = 1;
-        boolean bandera = false;
-        System.out.println(numBuffer);
-
-        //Si mi numBuffer ha sido diferente 0, sigo con el bucle
-        
-            do {
-                numBuffer = numBuffer / 10;
-                potencia++;
-
-            } while (numBuffer == 0);
-       
-        
         
 
-        System.out.println("El tamaño del numero " + num + " es de " + potencia);
-        return potencia;
+        System.out.println("El tamaño del numero " + num + " es de " + (num.length()));
+        return 1;
     }
 
 }
