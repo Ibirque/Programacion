@@ -16,37 +16,36 @@ public class PardoIbirque_Spencer {
     -Fichero .pdf con el diagrama o esquema del ejercicio desglodsado
     una explicación del planteamiento y que se llame ApellidoNombre.pdf
     -Si hay mejoras se tendran que explicar en el comentario de entrega */
- /*QUE QUEREMOS HACER?*/
- /*Queremos un programa que calcule los 20 primeros numeros Spencer
-    -Queremos una clase que determine el tamaño del numero a leer
+    
+    /*QUE QUEREMOS HACER?*/
+    /*Queremos un programa que calcule los 20 primeros numeros Spencer
+    -Queremos una clase que guarde numero a leer
     -Dependiendo de la cantidad de numeros tendremos que elevar el numero
     -Queremos hacer la suma de los numeros
     -Finalmente comparamos el numero original con la suma realizada
      */
     public void inicio() {
         //System.out.println(3%10);
-        tamaNum("1236");
+        guardarEnArray("1236");
     }
 
-    /*DETERMINAR TAMAÑO*/
-    public int tamaNum(String num) {
+    /*GUARDAR EN ARRAY TAMAÑO*/
+    public int guardarEnArray(String num) {
         //Convertir el string a numero
         int x = Integer.parseInt(num);
         //Crear una array de tamaño definido por nuestrostring
         int[] arr = new int[num.length()];
 
-        System.out.println(Arrays.toString(arr));
-
+        //Queremos guardar cada numero en una posicion diferente del array
         for (int i = 0; i < num.length(); i++) {
-            System.out.println(num.charAt(i));
-            
-            
+            /*Ahora hacemos un parseint llamamos al string
+            extraemos el caracter en la posicion 'i'*/
             arr[i] = Integer.parseInt(num.valueOf(num.charAt(i)));       
         }
-        System.out.println(Arrays.toString(arr));
-
-        System.out.println("El tamaño del numero " + num + " es de " + (num.length()));
+        System.out.println(""+num.length());
         return 1;
     }
+    
+    
 
 }
