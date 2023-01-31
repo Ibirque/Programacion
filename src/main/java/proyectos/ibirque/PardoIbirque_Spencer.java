@@ -1,5 +1,6 @@
 package proyectos.ibirque;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PardoIbirque_Spencer {
@@ -31,14 +32,18 @@ public class PardoIbirque_Spencer {
     public int tamaNum(String num) {
         //Convertir el string a numero
         int x = Integer.parseInt(num);
-        int numBuffer = x % 10;
-        for (int i = 0; i < num.length() - 1; i++) {
-            //intento dividir entre 10
-            numBuffer = numBuffer % 10;
-            System.out.println(numBuffer);
-        }
+        //Crear una array de tamaño definido por nuestrostring
+        int[] arr = new int[num.length()];
 
-        
+        System.out.println(Arrays.toString(arr));
+
+        for (int i = 0; i < num.length(); i++) {
+            System.out.println(num.charAt(i));
+            
+            
+            arr[i] = Integer.parseInt(num.valueOf(num.charAt(i)));       
+        }
+        System.out.println(Arrays.toString(arr));
 
         System.out.println("El tamaño del numero " + num + " es de " + (num.length()));
         return 1;
