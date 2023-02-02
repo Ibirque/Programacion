@@ -75,7 +75,7 @@ public class PardoIbirque_Spencer {
         } while (a > 0);
 
         if (suma == numOriginal) {
-            System.out.println(numOriginal+" Es un numero Spencer");
+            System.out.println(contador+" - "+numOriginal+" Es un numero Spencer");
             contador += 1;
             return true;
         } else {
