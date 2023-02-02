@@ -9,7 +9,8 @@ public class PR2_UF2_Main {
     
     public void inicio(){
         PR2_UF2 metodos = new PR2_UF2();
-        metodos.factores();
+        int numero = metodos.IntroNum();
+        metodos.factores(numero);
     }
 
 }

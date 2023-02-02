@@ -3,12 +3,11 @@ package proyectos.Nacef;
 import java.util.Scanner;
 
 public class PR2_UF2 {
-     public int factores() {
+     
+    public int IntroNum() {
         Scanner entrada = new Scanner(System.in);
 
         int numero = 0;
-
-        int p = 2;
 
         boolean salir = false;
 
@@ -38,7 +37,12 @@ public class PR2_UF2 {
             }
 
         } while (!salir);
+        return numero;
+    }
 
+    public int factores(int numero) {
+
+        int p = 2;
         int numeroInt = numero;
 
         System.out.print("Los factores del numero introducido es/son: ");
