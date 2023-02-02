@@ -5,15 +5,8 @@ import java.util.Scanner;
 
 public class PardoIbirque_Spencer {
 
-    private int contador = 1;
-
-    public static void main(String[] args) {
-        PardoIbirque_Spencer progr = new PardoIbirque_Spencer();
-        progr.inicio();
-    }
-
     /*QUE QUEREMOS HACER?*/
- /*Queremos un programa que calcule los 20 primeros numeros Spencer
+    /*Queremos un programa que calcule los 20 primeros numeros Spencer
     -Queremos una clase que genere el numero a leer
     -Queremos una clase principal que nos diga el tamaño del numero y
         llame a una funcion de comprobacion (checker)
@@ -21,6 +14,13 @@ public class PardoIbirque_Spencer {
     -Comparamos el numero original con la suma realizada y devolvemos true/false
     -Incrementamos la variable global que controla cuantos numero llevamos
      */
+    private int contador = 1;
+
+    public static void main(String[] args) {
+        PardoIbirque_Spencer progr = new PardoIbirque_Spencer();
+        progr.inicio();
+    }
+
     public void inicio() {
         generador();
     }
@@ -67,7 +67,4 @@ public class PardoIbirque_Spencer {
             x += 1;
         } while (contador <= 20);
     }
-
-    
-    
 }
