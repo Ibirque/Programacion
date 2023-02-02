@@ -20,7 +20,14 @@ public class PardoIbirque_primos {
     public void inicio() {
         int x;
         x = captura();
-        comprobar(x);
+        //comprobar(x);
+        
+        if(comprobar(x)){
+            System.out.println("\n"+x+" ¡Es primo!");
+        }else{
+            System.out.println("\n"+x+" No es primo");
+        }
+        
     }
 
     public int captura() {
@@ -81,10 +88,7 @@ public class PardoIbirque_primos {
             //Probamos 19x7 = 133 para ver las iteraciones
         } while (i != x);
 
-        if(primo){
-            System.out.println(x+" Es primo!");
-        }
-        return false;
+        return primo;
     }
 
 }
