@@ -88,13 +88,13 @@ public class PardoIbirque_Spencer {
     /*GENERADOR DE NUMEROS*/
     public String generador(){
         //Creamos un conversor que nos transforma los numeros a string para mandarselos a la funcion principal
-        int x=0;
+        int x=1;
         do{
         String s = String.valueOf(x);
         principal(s);
         x +=1;
         
-        }while(contador<20);
+        }while(contador<=20);
         
         
         return "";
