@@ -6,11 +6,6 @@ import java.util.Scanner;
 public class PardoIbirqueFRASE {
 
     public static void main(String[] args) {
-        /*Objetivo*/
-        /*Crear un programa que pida un entero y compruebe si el numero
-        se puede leer de derecha a izquierda que de izq. a der.*/
-        /*EJ: 121, 3003, 33*/
-
         //Declaracion de variables
         String Frase = null;
         String Frase2 = "";
@@ -27,32 +22,42 @@ public class PardoIbirqueFRASE {
 
         //input del usuario
         Frase = entrada.nextLine();
-        j = Frase.length() - 1;
+        j = Frase.length()-1;
 
         /*Podriamos hacer la comprobacion de los caracteres letra por letra
         en busca de acentos con un metodo similar a: 
-        if((string[i] == 'a'  string[i]=="á")   (string[j] == 'a' || string[j]=="á"))
-        o bien
-        Frase.replace(Frase2, Frase2)*/
-        //pero vamos a usar un normalizer 
+        if((string[i] == 'a'  string[i]=="รก")   (string[j] == 'a' || string[j]=="รก"))
+        o bien Frase.replace(Frase2, Frase2)*/
+        
+        /*Pero vamos a usar un normalizer 
+        Importamos la libreria externa y usamos: */
+        /*Normalizer.normalize(String, Normalizer.Form.NFD)*/
+        //Esto nos permite transformar el string entero en una cadena de texto simple sin acentos de manera automatica
+        
         Frase = Normalizer.normalize(Frase, Normalizer.Form.NFD);
         Frase = Frase.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        
 
+        System.out.println(Frase);
+        //Transformamos en minusculas la frase original entera
+        Frase2 = Frase.toLowerCase();
+        
         //replaceAll("\s", ""); Con esto podriamos sustituir los espacios facilmente
+        
         //Recorremos todos los valores de nuestro string y comparamos caracteres
         do {
 
-            if (Frase.charAt(i) == Frase.charAt(j)) {
-                Frase2 = Frase2 + Frase.charAt(i);
+            if (Frase2.charAt(i) == Frase2.charAt(j)) {
+                //Frase2 = Frase2 + Frase.charAt(i);
                 i++;
                 j--;
                 if (i > j && j < i) {
-                    System.out.println("Se puede leer en ambas direcciones! \n" + Frase2);
+                    System.out.println("Se puede leer en ambas direcciones! \n");
                     salir1 = true;
                 }
-            } else if (Frase.charAt(i) == ' ') {
+            } else if (Frase2.charAt(i) == ' ') {
                 i++;
-            } else if (Frase.charAt(j) == ' ') {
+            } else if (Frase2.charAt(j) == ' ') {
                 j--;
             } else {
                 System.out.println("No es legible en ambas direcciones\n");
