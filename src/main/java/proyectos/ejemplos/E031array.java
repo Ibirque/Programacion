@@ -19,7 +19,6 @@ public class E031array {
         Scanner entrada = new Scanner(System.in);
         final int TAM = 5;
         int valores[] = new int[TAM];
-
         
         for(int i = 0;i<valores.length;i++){
             System.out.println("Introduce un numero entero");

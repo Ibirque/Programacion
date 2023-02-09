@@ -23,7 +23,7 @@ public class E016precioFinal {
             precio += TRANSPORTE;
         }
         if(precio >= COMPRA_DTO){
-            precio = precio - precio * DESCUENTO;
+            precio = precio - (precio * DESCUENTO);
         }
         System.out.println("El precio final es de " + precio + " euros.");
         

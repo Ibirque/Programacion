@@ -19,7 +19,6 @@ public class E017descuento {
         
         //declaración de variables
         //float precio;
-        
         Scanner entrada = new Scanner(System.in);
         System.out.println("¿Cuál es el precio final de la compra?");
         float precio = entrada.nextFloat();

@@ -29,9 +29,9 @@ public class E039busquedaCaracter {
         int incial = texto.indexOf(letra);
         int ultima = texto.lastIndexOf(letra);
         
-        if(incial>-1){
+        if(incial > -1){
             System.out.println("1º:" + incial);
-            System.out.println("ultima:" + incial);
+            System.out.println("ultima:" + ultima);
         }else{
             System.out.println("No aparaece");
         }

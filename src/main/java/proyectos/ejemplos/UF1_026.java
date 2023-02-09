@@ -23,7 +23,7 @@ public class UF1_026 {
         final int TAM = 10;
         int a[] = new int[TAM];
         int cre = 0, decre = 0;
-
+        System.out.println("");
         for (int i = 0; i < TAM; i++) {
             while (!entrada.hasNextInt()) {
                 System.out.println("No es un numero ");
