@@ -1,18 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package proyectos.Ouxi;
 
 import java.util.Scanner;
 
-/**
- *
- * @author 11938
- */
 public class ExamenLetra {
 
-    //Variables que necesito para trabajar en mas de una clase
     public String letra = null;
     public String texto = null;
 
@@ -70,7 +61,7 @@ public class ExamenLetra {
             }
 
         }
-        System.out.println("La frase introducida contiene "  + contador + " veces la letra " + letra);
+        System.out.println("La frase introducida contiene "  + contador + " veces la letra " + letra.toLowerCase());
     }
 }
 //EN ESTE EJERCICIO NO TUVE NINGUN PROBLEMA, ES MUY PARECIDO AL EJERCICIO DE PALINDROMO E INCLUSO DIRIA QUE ES AUN MAS FACIL
