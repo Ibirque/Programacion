@@ -19,18 +19,22 @@ public class NumerosRomanos {
     //cuando el usuario haya introducido un valor válido
     public void IntroducirN() {
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Introduce un numero de 0-2000");
+        System.out.println("(Introduzca 2211 para salir del programa)");
         boolean salida = false;
         do {
+            System.out.println("Introduce un numero de 0-2000");
             while (!entrada.hasNextInt()) {
                 System.out.println("Introduce numeros porfavor\nPruebe de nuevo:");
                 entrada.next();
             }
             int num = entrada.nextInt();
+            if(num == 2211){
+                System.out.println("Programa finalizada");
+                break;
+            }
             if (num < 0 || num > 2000) {
                 System.out.println("Tiene que ser un numero entre 0-2000");
             } else {
-                salida = true;
                 conversion(num);
             }
         } while (!salida);
@@ -46,8 +50,13 @@ public class NumerosRomanos {
                 num = num - 1000;
             } else {
                 if (num >= 500) {
-                    System.out.print("D");
+                    if(num >= 900){
+                    System.out.print("CM");
+                    num = num-900;
+                    }else{
+                        System.out.print("D");
                     num = num - 500;
+                    }
                 } else {
                     if (num >= 100) {
                         if (num >= 400) {
@@ -59,8 +68,13 @@ public class NumerosRomanos {
                         }
                     } else {
                         if (num >= 50) {
-                            System.out.print("L");
-                            num = num - 50;
+                            if(num >= 90){
+                                num = num-90;
+                                System.out.print("XC");
+                            }else{
+                               System.out.print("L");
+                            num = num - 50; 
+                            }
                         } else {
                             if (num >= 10) {
                                 if (num >= 40) {
@@ -72,8 +86,13 @@ public class NumerosRomanos {
                                 }
                             } else {
                                 if (num >= 5) {
-                                    System.out.print("V");
-                                    num = num - 5;
+                                    if(num >= 9){
+                                        num = num-9;
+                                        System.out.println("IX");
+                                    }else{
+                                       System.out.print("V");
+                                    num = num - 5; 
+                                    }
                                 } else {
                                     if (num >= 1) {
                                         if (num >= 4) {
@@ -90,7 +109,8 @@ public class NumerosRomanos {
                     }
                 }
             }
-
+            
         } while (num != 0);
+        System.out.println("");
     }
 }
