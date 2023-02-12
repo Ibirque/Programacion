@@ -64,7 +64,7 @@ public class NumerosRomanos {
                         } else {
                             if (num >= 10) {
                                 if (num >= 40) {
-                                    System.out.println("XL");
+                                    System.out.print("XL");
                                     num = num - 40;
                                 } else {
                                     System.out.print("X");
@@ -77,7 +77,7 @@ public class NumerosRomanos {
                                 } else {
                                     if (num >= 1) {
                                         if (num >= 4) {
-                                            System.out.println("IV");
+                                            System.out.print("IV");
                                             num = num - 4;
                                         } else {
                                             System.out.print("I");
@@ -93,3 +93,4 @@ public class NumerosRomanos {
 
         } while (num != 0);
     }
+}
