@@ -28,11 +28,11 @@ public class NumerosRomanos {
                 entrada.next();
             }
             int num = entrada.nextInt();
-            if(num == 2211){
+            if (num ==4433) {
                 System.out.println("Programa finalizada");
                 break;
             }
-            if (num < 0 || num > 2000) {
+            if (num < 0 || num > 3999) {
                 System.out.println("Tiene que ser un numero entre 0-2000");
             } else {
                 conversion(num);
@@ -50,12 +50,12 @@ public class NumerosRomanos {
                 num = num - 1000;
             } else {
                 if (num >= 500) {
-                    if(num >= 900){
-                    System.out.print("CM");
-                    num = num-900;
-                    }else{
+                    if (num >= 900) {
+                        System.out.print("CM");
+                        num = num - 900;
+                    } else {
                         System.out.print("D");
-                    num = num - 500;
+                        num = num - 500;
                     }
                 } else {
                     if (num >= 100) {
@@ -68,12 +68,12 @@ public class NumerosRomanos {
                         }
                     } else {
                         if (num >= 50) {
-                            if(num >= 90){
-                                num = num-90;
+                            if (num >= 90) {
+                                num = num - 90;
                                 System.out.print("XC");
-                            }else{
-                               System.out.print("L");
-                            num = num - 50; 
+                            } else {
+                                System.out.print("L");
+                                num = num - 50;
                             }
                         } else {
                             if (num >= 10) {
@@ -86,12 +86,12 @@ public class NumerosRomanos {
                                 }
                             } else {
                                 if (num >= 5) {
-                                    if(num >= 9){
-                                        num = num-9;
-                                        System.out.println("IX");
-                                    }else{
-                                       System.out.print("V");
-                                    num = num - 5; 
+                                    if (num >= 9) {
+                                        num = num - 9;
+                                        System.out.print("IX");
+                                    } else {
+                                        System.out.print("V");
+                                        num = num - 5;
                                     }
                                 } else {
                                     if (num >= 1) {
@@ -109,7 +109,7 @@ public class NumerosRomanos {
                     }
                 }
             }
-            
+
         } while (num != 0);
         System.out.println("");
     }
