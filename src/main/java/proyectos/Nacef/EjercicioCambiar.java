@@ -14,7 +14,7 @@ public class EjercicioCambiar {
         String path = Int();
         //File document = new File("C:/temporal/temp.txt");
         File document = new File(path);
-        File newDocument = new File("C:/temporal/hola");
+        File newDocument = new File(document.getParent() + "/hola");
         boolean resultado = document.renameTo(newDocument);
         System.out.println("Se ha movido y renombrado la carpeta: " + resultado);
     }
