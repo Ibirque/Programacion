@@ -14,12 +14,12 @@ public class E001Files {
     
     public void inicio(){
         //Inicializamos dos rutas absolutas diferentes
-        File carpetaAbs = new File("C:/Carpeta");
-        File ficheroAbs = new File("C:/Carpeta/documento.txt");
+        File carpetaAbs = new File("C:/temp");
+        File ficheroAbs = new File("C:/temp/documento.txt");
         
         //inicializamos rutas relativas
-        File carpetaRel = new File("Carpeta");
-        File ficheroRel = new File("Carpeta/texto.txt");
+        File carpetaRel = new File("temp");
+        File ficheroRel = new File("temp/texto.txt");
         
         //mostrar los datos de cada uno
         mostrarRutas(carpetaAbs);
