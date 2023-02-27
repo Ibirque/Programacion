@@ -31,7 +31,7 @@ public class E019posicionValor {
     }
         //lo he encontrado?
         if(!encontrado){
-            posicion = -1;
+            posicion = posicion-1;
         }
         
         //posicion tiene resultado

@@ -58,7 +58,7 @@ public class PardoIbirque_primos {
     }
 
     public boolean comprobar(int x) {
-        //Nuestro iterador, lo inicializamos a 2 porque se
+        //Nuestro iterador, lo inicializamos a "2" porque se
         //sobreentiende que todos los numeros son divisibles por "1"
         //Usaremos este iterador para dividir los numeros
         int i = 2;
