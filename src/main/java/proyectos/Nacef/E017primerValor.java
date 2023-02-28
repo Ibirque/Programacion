@@ -19,7 +19,7 @@ public class E017primerValor {
             //lectura del primer dato
             int medida = lectura.nextInt(); 
             System.out.println("Lectura de " + medida + " datos");
-            for(int i=0; i < media; i++){
+            for(int i=0; i < medida; i++){
                 int valor = lectura.nextInt();
                 System.out.println("Valor " + (i+1) + ": " + valor);
             }
