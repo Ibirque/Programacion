@@ -1,0 +1,5 @@
+Peter Parker 3 4 3,5 6
+Nacef Oueslati 3 10 10 9,4
+Dani Cumplido 5 9 9 9,9 9,9 9,3
+Ares Algomas 3 3,6 2,7 2
+fin
