@@ -20,7 +20,7 @@ public class E024lectura {
             long numEnteros =  f.length() / 4;
             System.out.println("Hay "+numEnteros + " enteros.");
             for(int i=0; i < numEnteros; i++){
-                int valor = raf.read();
+                int valor = raf.readInt();
                 System.out.println("Se ha leido el valor: "+valor);
             }
             raf.close();
