@@ -21,7 +21,7 @@ public class E025realesBin {
 
     public void GenerarNumeros() {
         try {
-            File f = new File("numeros.bin");
+            File f = new File("numeros2.bin");
             RandomAccessFile raf = new RandomAccessFile(f, "rw");
             //sin delimitadores
             //generar valores y escribir
@@ -45,14 +45,19 @@ public class E025realesBin {
 
     public void LeerNumeros() {
          try{
-            File f = new File ("numeros.bin");
+            File f = new File ("numeros2.bin");
             RandomAccessFile raf = new RandomAccessFile(f,"r");
             long numEnteros =  f.length() / 4;
             System.out.println("Hay "+numEnteros + " enteros.");
+            //int[] buffer = new int[20];
             for(int i=0; i < numEnteros; i++){
-                int valor = raf.readInt();
+                double valor = raf.readDouble();
+                //buffer[i] = valor;
                 System.out.println("Se ha leido el valor: "+valor);
             }
+            
+            
+            //ordenar de mayor a menor
             raf.close();
         }catch(Exception e){
             System.out.println("Error: "+e);
