@@ -11,6 +11,8 @@ public class Polimorfismo {
     }
 
     public void inicio() {
+        /*  Llamamos a sum, aunque en principio tenemos 3 sum distintos
+            el compilador intenta llamar a la clase adecuada*/
         System.out.println("Polimorfia con 2 valores " + sum(5,10));
         System.out.println("Polimorfia con 3 valores " + sum(5,10,15));
         System.out.println("Polimorfia con 2 valores decimales " + sum(5.4,10.4));
