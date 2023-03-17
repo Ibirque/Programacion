@@ -15,13 +15,41 @@ public class CirculoUF4 {
     
     //constructor con un valor por defecto y otro inicializado
     public CirculoUF4(double r){
-        radio = r;
+        this. radio = r;
         color = "negro";
     }
+    
+    //método constructor sin valores por defecto
+
+    public CirculoUF4(double r, String c) {
+        radio = r;
+        color = c;
+    }
+    
 
     public double getRadio() {
         return radio;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setRadio(double nuevoR) {
+        radio = nuevoR;
+    }
+
+    public void setColor(String nuevoC) {
+        color = nuevoC;
+    }
+
+    @Override
+    public String toString() {
+        return "CirculoUF4{" + "radio=" + radio + ", color=" + color + '}';
+    }
+    
+    
+    
     
     //más métodos de un circulo, no accesores
     public double area(){
