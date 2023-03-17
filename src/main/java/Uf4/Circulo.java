@@ -18,14 +18,40 @@ public class Circulo {
         radio = r;
         color = "negro";
     }
+    
+    //metodo constructor sin valores por defecto
+    public Circulo(double r, String c) {
+        this.radio = r;
+        color = c;
+    }
+    
 
     public double getRadio() {
         return radio;
+    }
+
+    public String getColor() {
+        return color;
+    }        
+   
+    //Seccion de setters
+    public void setRadio(double nuevoR) {
+        radio = nuevoR;
+    }
+
+    public void setColor(String NuevoC) {
+        color = NuevoC;
     }
     
     //mas metodos de un circulo, o accessores
     public double area(){
         return radio*radio*Math.PI;
     }
+
+    @Override
+    public String toString() {
+        return "Circulo{" + "radio=" + radio + ", color=" + color + '}';
+    }
+    
     
 }
