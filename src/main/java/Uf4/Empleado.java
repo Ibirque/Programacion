@@ -58,8 +58,10 @@ public class Empleado {
         return Sueldo*14;
     }
     
-    public float subirSueldo(int procentaje){
-        return Sueldo*(1+procentaje);
+    public void subirSueldo(float procentaje){
+        //return Sueldo*(1+procentaje/100);
+        this.Sueldo = Sueldo*(1+procentaje/100);
+        
     }  
 
     @Override
