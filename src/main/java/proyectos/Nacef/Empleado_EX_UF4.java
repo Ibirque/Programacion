@@ -40,7 +40,7 @@ public class Empleado_EX_UF4 {
     }
     
     public float subirSueldo(float porcentaje){
-        return sueldo * (porcentaje/100);
+        return sueldo + sueldo * (porcentaje/100);
     }
 
     @Override
