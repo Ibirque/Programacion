@@ -66,7 +66,7 @@ public class Discos {
         cadena += "\nAutor: "+this.autor;
         cadena += "\nTitulo: "+this.titulo;
         cadena += "\nGenero: "+this.genero;
-        cadena += "\nLa duracion es de: "+this.duracion;
+        cadena += "\nLa duracion es de: "+this.duracion+" minutos";
         
         return cadena;
     }
