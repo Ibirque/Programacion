@@ -1,5 +1,6 @@
 package Uf4;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DiscosMain {
@@ -11,8 +12,8 @@ public class DiscosMain {
     4-MODIFICAR
     5-SALIR
      */
-    int NUMDISCOS = 0;
-    Discos[] totalDiscos = new Discos[10];
+    int NUMDISCOS = 0;    
+    ArrayList<Object> nombreDiscos = new ArrayList<>();
 
     public static void main(String[] args) {
         DiscosMain prog = new DiscosMain();
@@ -21,18 +22,14 @@ public class DiscosMain {
 
     public void Menu() {
         //Esta clase nos imprime el menu, solo lo hara una vez
-        System.out.println("""
-                           ***********************
-                           Elige que quieres hacer
-                           1-Listar
-                           2-Anyadir
-                           3-Borrar
-                           4-Modificar
-                           5-Salir""");
+        TextoDefault();
 
         boolean flag = false;
         Scanner ent = new Scanner(System.in);
         int entrada = 0;
+        
+        
+        
         do {
             if (ent.hasNextInt()) {
                 entrada = ent.nextInt();
@@ -75,9 +72,8 @@ public class DiscosMain {
     public void Listar() {
         //primero queremos pedir al usuario que es lo que quiere listar        
         Scanner ent = new Scanner(System.in);
-        int entrada = 0;
-        boolean flag = false;
-        String xd;
+        int entrada;
+        boolean flag = false;       
 
         System.out.println("Introduce un numero que ya exista en nuestra base de datos, de momento hay: " + NUMDISCOS + " discos registrados.");
         do {
@@ -89,9 +85,8 @@ public class DiscosMain {
                     System.out.println("Ese ID no esta registrado");
                     ent.nextLine();
                 } else {
-                    //Ahora llamamos al numero de disco                              
-                    xd = totalDiscos[entrada].toString();
-                    System.out.println(xd);
+                    //Ahora llamamos al numero de disco                     
+                    System.out.println("aa"+nombreDiscos.get((entrada-1)));
                     break;
                 }
             } else {
@@ -118,19 +113,19 @@ public class DiscosMain {
             String titulo = "";
             String genero = "";
             int duracion = 0;
-            totalDiscos[NUMDISCOS] = new Discos(autor, titulo, genero, NUMDISCOS, duracion);
+            Discos x = new Discos(autor, titulo, genero, NUMDISCOS, duracion);
 
             System.out.println("\nIntroduce el autor");
             autor = ent.nextLine();
-            totalDiscos[NUMDISCOS].setAutor(autor);
+            x.setAutor(autor);
 
             System.out.println("\nIntroduce el titulo");
             titulo = ent.nextLine();
-            totalDiscos[NUMDISCOS].setTitulo(titulo);
+            x.setTitulo(titulo);
 
             System.out.println("\nIntroduce el genero");
             genero = ent.nextLine();
-            totalDiscos[NUMDISCOS].setGenero(genero);
+            x.setGenero(genero);
 
             //le asignamos nosotros el ID, en funcion del numero de discos guardado
             //lo asignamos directamente al crear el objeto, no hace falta llamarlo con el setter
@@ -138,12 +133,13 @@ public class DiscosMain {
             System.out.println("\nIntroduce la duracion del album en minutos");
             if (ent.hasNextInt()) {
                 duracion = ent.nextInt();
-                totalDiscos[NUMDISCOS].setDuracion(duracion);
+                x.setDuracion(duracion);
                 System.out.println("Datos introducidos correctamente!");
                 bandera = true;
             } else {
                 System.out.println("Por favor introduce un numero");
             }
+            nombreDiscos.add(x);
 
         } while (!bandera);
 
@@ -271,4 +267,4 @@ public class DiscosMain {
                            5-Salir""");
     }
 
-}
+}//FIN
