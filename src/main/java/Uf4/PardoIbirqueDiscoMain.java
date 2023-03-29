@@ -152,7 +152,7 @@ public class PardoIbirqueDiscoMain {
 
     public void Modificar() {
         //Listamos los elementos para que el usuario pueda elegir
-        System.out.println("***Lista de discos disponibles para editar***");
+        System.out.println("***Lista de discos disponibles para editar***\n");
         Listar();
         //Ahora queremos modificar, le pregutnamos el numero y le listamos el elemento primero para que lo vea
 
@@ -185,7 +185,8 @@ public class PardoIbirqueDiscoMain {
                     System.out.println("\nIntroduce el genero");
                     nombreDiscos.get(entrada).setGenero(ent.nextLine());
 
-                    System.out.println("\nIntroduce la duracion del album en minutos");                    
+                    System.out.println("\nIntroduce la duracion del album en minutos");
+                    
                     
                     do{
                     if (ent.hasNextInt()) {
@@ -198,6 +199,7 @@ public class PardoIbirqueDiscoMain {
                     }
                     }while(!bandera);
 
+                    //nombreDiscos.set(entrada, x);
                 } else {
                     System.out.println("Por favor introduce un numero valido");
                     ent.nextLine();
