@@ -1,7 +1,7 @@
 
 package Uf4;
 
-public class Discos {
+public class PardoIbirqueDisco {
     //encapsular atributos
     //generamos un menu que nos de varias opciones
     
@@ -12,7 +12,7 @@ public class Discos {
     private int id;
     private int duracion;
 
-    public Discos(String autor, String titulo, String genero, int id, int duracion) {
+    public PardoIbirqueDisco(String autor, String titulo, String genero, int id, int duracion) {
         this.autor = autor;
         this.titulo = titulo;
         this.genero = genero;

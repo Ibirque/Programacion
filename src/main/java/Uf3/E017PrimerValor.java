@@ -15,7 +15,7 @@ public class E017PrimerValor {
 
     public void inicio() {
         try{
-            File f = new File("C:/temp/Enteros.txt");                     
+            File f = new File("Enteros.txt");                     
             Scanner lectura = new Scanner(f);     
             //lectura del primer dato
             int media = lectura.nextInt();
