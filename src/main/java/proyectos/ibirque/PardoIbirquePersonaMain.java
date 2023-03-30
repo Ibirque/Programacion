@@ -5,28 +5,6 @@ import java.util.Scanner;
 
 public class PardoIbirquePersonaMain {
 
-    /*     
-    Crea un programa que haga lo siguiente:
-    Pide al usuario el nombre, la edad, número del DNI, sexo, peso y altura.
-    Para cada objeto instanciado (persona), deberá:
-    Devolver la letra de su DNI
-    Comprobar si está en su peso ideal, tiene sobrepeso o por debajo de su peso ideal.
-    Indicar si es mayor de edad.
-    Mostrar la información completa de cada objeto
-     */
-    //ESPECIFICACIONES
-    /*
-    - El sexo será ·”OTRO” por defecto, por si no se introduce H o M
-    - Índice de Masa Corporal: peso en kg/(altura^2 en m)
-    Declarar un método que calcule el IMC y devuleva:
-    -1 si devueve un número entre menor que 20 (peso por debajo del normal)
-    0 si devuelve un número entre 20 y 25 (peso ideal)
-    1 si devuelve un número mayor que 25 (sobrepeso)
-    
-    -Array para calcular la letra del DNI:
-    char letras[ ] = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
-     */
-    //Hacemos un arraylist para guardar todos los datos
     ArrayList<PardoIbirquePersona> datosPersonas = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -45,23 +23,20 @@ public class PardoIbirquePersonaMain {
             if (ent.hasNextInt()) {
                 entrada = ent.nextInt();
                 switch (entrada) {
-                    case 1:
-                        // 1-Introducir
+                    case 1 -> // 1-Introducir
                         Introducir();
-                        break;
-                    case 2:
-                        // 2-Listar
+                    case 2 -> // 2-Listar
                         Listar();
-                        break;
-                    case 3:
+                    case 3 -> {
                         // 3-Salir
                         System.out.println("Que tengas un buen dia!");
                         bandera = true;
-                        break;
-                    default:
+                    }
+                    default -> {
                         // Volver a preguntar
                         System.out.println("Opcion incorrecta vuelve a elegir");
                         Menu();
+                    }
                 }
 
             } else {
@@ -130,13 +105,15 @@ public class PardoIbirquePersonaMain {
         do {
             if (ent.hasNextFloat()) {
                 alturaTemp = ent.nextFloat();
-                if(alturaTemp < 0.30 || alturaTemp > 2.40){
+                if (alturaTemp < 0.30 || alturaTemp > 2.40) {
                     System.out.println("Los valores de altura deben estar entre 0.3m y 2.4m");
-                }else{
-                x.setAltura(alturaTemp);
-                break;}
+                } else {
+                    x.setAltura(alturaTemp);
+                    break;
+                }
             } else {
-                System.out.println("Por favor usa un formato valido, por ejemplo 2,03");
+                System.out.println("Por favor usa un formato valido, por ejemplo 2.03");
+                ent.nextLine();
             }
         } while (true);
 
@@ -183,77 +160,33 @@ public class PardoIbirquePersonaMain {
     public void Listar() {
         //Listamos todos los elementos recorriendo el Arraylist     
         for (int i = 0; i < datosPersonas.size(); i++) {
-            //Pedimos los datos
             System.out.println("----------------");
-            //System.out.println("ID: " + datosPersonas.get(i));
-            System.out.println(datosPersonas.get(i).getNombre() + " con DNI " + datosPersonas.get(i).getNumDNI() + CalculoLetraDNI(datosPersonas.get(i).getNumDNI()));
+            //Esta linea tambien nos devuelve la letra del DNI
+            System.out.println("" + datosPersonas.get(i).toString());
 
-            //Mayoria de edad
-            System.out.println("Edad: " + datosPersonas.get(i).getEdad());
-            if (MayoriaEdad(datosPersonas.get(i).getEdad())) {
+            //Pedimos el boleano de mayoria de edad
+            if (datosPersonas.get(i).MayoriaEdad(datosPersonas.get(i).getEdad())) {
                 System.out.println("Es mayor de edad");
             } else {
-                System.out.println("No es mayor de edad");
+                System.out.println("Es menor de edad");
             }
-            System.out.println("Sexo: " + datosPersonas.get(i).getSexo());
 
-            System.out.println("Peso: " + datosPersonas.get(i).getPeso());
-            System.out.println("Altura: " + datosPersonas.get(i).getAltura());
-
-            //Switch para imprimir el IMC
-            switch (PesoIdeal(datosPersonas.get(i).getPeso(), datosPersonas.get(i).getAltura())) {
-                case -1:
+            switch (datosPersonas.get(i).PesoIdeal(datosPersonas.get(i).getPeso(), datosPersonas.get(i).getAltura())) {
+                case -1 ->
                     System.out.println("Peso por debajo de lo normal");
-                    break;
-                case 0:
-                    System.out.println("Peso ideal");
-                    break;
-                case 1:
-                    System.out.println("Sobrepeso");
-                    break;
-                default:
+                case 0 ->
+                    System.out.println("Esta en el peso ideal");
+                case 1 -> {
+                    System.out.println("Tiene sobrepeso");
+                }
+                default -> {
                     // Volver a preguntar
-                    System.out.println("Algo ha malido sal");
+                    System.out.println("Opcion incorrecta vuelve a elegir");
                     Menu();
+                }
             }
             System.out.println("----------------");
         }
     }
 
-    public char CalculoLetraDNI(int numeroDNI) {
-        //Queremos devolver la letra de su DNI, usaermos el array siguiente
-        char[] letras = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
-
-        //Calculo del resto        
-        return letras[numeroDNI % 23];
-    }
-
-    public int PesoIdeal(int peso, float altura) {
-        //Queremos comprobar su peso ideal, usaremos la siguiente formula:
-        /*
-        Índice de Masa Corporal: peso en kg/(altura^2 en m)
-        Si "IMC < 20" devolver -1 (Peso por debajo de lo normal)
-        Si "IMC > 20 && IMC < 25" devolver 0 (Peso ideal)
-        Si "IMC > 25" devolver 1 (Sobrepeso)
-         */
-
-        float IMC = peso / (altura * altura);
-        if (IMC < 20) {
-            return -1;
-        } else if (IMC >= 20 && IMC <= 25) {
-            return 0;
-        } else {
-            return 1;
-        }
-
-    }
-
-    public boolean MayoriaEdad(int edad) {
-        //Si edad > 18, es mayor de edad
-        if (edad >= 18) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
