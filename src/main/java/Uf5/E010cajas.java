@@ -3,6 +3,7 @@ package Uf5;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -26,6 +27,7 @@ public class E010cajas extends JFrame{
         crearPanel();
         crearCajas();
         crearAreaTexto();
+        crearListas();
     }
     
     private void crearPanel(){
@@ -59,6 +61,15 @@ public class E010cajas extends JFrame{
         area.setEditable(true);
         System.out.println("El texto del area es: "+area.getText());
         area.setBounds(50, 100, 200, 200);
+    }
+    
+    private void crearListas(){
+        //JComboBox lista = new JComboBox();
+        //crear array con los elementos de la lista
+        String[] ciudades = {"Barcelona", "Madrid", "Valenica"};
+        JComboBox ciudad = new JComboBox(ciudades);
+        ciudad.setBounds(50, 350, 300, 25);
+        panel.add(ciudad);
     }
     
 }
