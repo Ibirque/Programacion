@@ -69,6 +69,10 @@ public class E010cajas extends JFrame{
         String[] ciudades = {"Barcelona", "Madrid", "Valenica"};
         JComboBox ciudad = new JComboBox(ciudades);
         ciudad.setBounds(50, 350, 300, 25);
+        //añadir elementos a la lista
+        ciudad.addItem("Bilbao");
+        //cambiar el objeto por defecto
+        ciudad.setSelectedItem("Bilbao");
         panel.add(ciudad);
     }
     
