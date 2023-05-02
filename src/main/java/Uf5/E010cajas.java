@@ -14,13 +14,12 @@ public class E010cajas extends JFrame{
 
     public E010cajas(String title) throws HeadlessException {
         super(title);
-        setVisible(true);
+        //setVisible(true);
         setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        crearComponentes();
-        
+        crearComponentes();        
     }
 
     private void crearComponentes() {
@@ -66,8 +65,9 @@ public class E010cajas extends JFrame{
     private void crearListas(){
         //JComboBox lista = new JComboBox();
         //crear array con los elementos de la lista
-        String[] ciudades = {"Barcelona", "Madrid", "Valenica"};
+        String[] ciudades = {"Barcelona", "Madrid", "Valenica"};        
         JComboBox ciudad = new JComboBox(ciudades);
+        
         ciudad.setBounds(50, 350, 300, 25);
         //añadir elementos a la lista
         ciudad.addItem("Bilbao");
