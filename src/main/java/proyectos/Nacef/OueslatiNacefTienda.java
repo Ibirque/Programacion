@@ -28,6 +28,14 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         articulo = new javax.swing.JLabel();
+        textfieldArticulo = new javax.swing.JTextField();
+        textfieldPrecio = new javax.swing.JTextField();
+        precio = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+        button = new javax.swing.JButton();
+        buttonTotal = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,7 +43,43 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
 
         articulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         articulo.setForeground(new java.awt.Color(255, 255, 255));
-        articulo.setText("Articulo:");
+        articulo.setText("Artículo:");
+
+        precio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        precio.setForeground(new java.awt.Color(255, 255, 255));
+        precio.setText("Precio: ");
+
+        textArea.setColumns(20);
+        textArea.setForeground(new java.awt.Color(153, 153, 153));
+        textArea.setRows(5);
+        textArea.setText("Artículos comprados: ");
+        jScrollPane1.setViewportView(textArea);
+        textArea.getAccessibleContext().setAccessibleName("");
+        textArea.getAccessibleContext().setAccessibleDescription("");
+
+        button.setBackground(new java.awt.Color(19, 243, 243));
+        button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        button.setForeground(new java.awt.Color(255, 255, 255));
+        button.setText("Siguiente Artículo");
+        button.setToolTipText("");
+        button.setActionCommand("button");
+        button.setBorder(null);
+
+        buttonTotal.setBackground(new java.awt.Color(19, 243, 243));
+        buttonTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonTotal.setForeground(new java.awt.Color(255, 255, 255));
+        buttonTotal.setText("Total");
+        buttonTotal.setToolTipText("");
+        buttonTotal.setActionCommand("button");
+        buttonTotal.setBorder(null);
+        buttonTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTotalActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(172, 207, 222));
+        jLabel1.setText("...importa parcial");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -43,15 +87,43 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(articulo)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(articulo)
+                        .addGap(18, 18, 18)
+                        .addComponent(textfieldArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(precio)
+                            .addGap(18, 18, 18)
+                            .addComponent(textfieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(articulo)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(articulo)
+                    .addComponent(textfieldArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precio)
+                    .addComponent(textfieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addComponent(buttonTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -67,6 +139,10 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,6 +181,14 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel articulo;
+    private javax.swing.JButton button;
+    private javax.swing.JButton buttonTotal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel precio;
+    private javax.swing.JTextArea textArea;
+    private javax.swing.JTextField textfieldArticulo;
+    private javax.swing.JTextField textfieldPrecio;
     // End of variables declaration//GEN-END:variables
 }
