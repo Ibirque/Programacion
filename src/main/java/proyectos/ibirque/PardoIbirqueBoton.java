@@ -7,15 +7,21 @@ package proyectos.ibirque;
 import java.awt.Dimension;
 import java.awt.MouseInfo;
 import java.awt.PointerInfo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
+ * int segundos = 0;
  *
  * @author Alumno
  */
 public class PardoIbirqueBoton extends javax.swing.JFrame {
+
+    int Cont = 0;
 
     /**
      * Creates new form PardoIbirqueBoton
@@ -143,13 +149,13 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
 
             Boton2.setBounds(Boton1.getBounds().x + 120, randY, 120, 40);
             jPanel2.add(Boton2);
-            
+
             //Queremos evitar todo lo posible generarlo cerca del raton
-            if ( Boton2.getBounds().x >= (M.getLocation().x - Boton2.getWidth())
+            if (Boton2.getBounds().x >= (M.getLocation().x - Boton2.getWidth())
                     && Boton2.getBounds().x <= M.getLocation().x + Boton1.getWidth()
                     && Boton2.getBounds().y >= (M.getLocation().y - Boton2.getHeight())
                     && Boton2.getBounds().y <= M.getLocation().y + Boton1.getHeight()) {
-                Boton2.setBounds(M.getLocation().x, M.getLocation().y-42, 120, 40);
+                Boton2.setBounds(M.getLocation().x, M.getLocation().y - 42, 120, 40);
                 jPanel2.add(Boton2);
             }
         } else {
@@ -161,13 +167,73 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton2MouseEntered
 
     private void Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton1ActionPerformed
+
+        //Declaracion de constantes
+        Cont = Cont + 1;
         Titulo2.setVisible(true);
         Boton1.setText("Persiguelo");
         Boton2.setText("Atrapame");
-       
-        jPanel2.add(new JLabel(Boton1.getIcon()));
-        
+
+        //Vectores
+        int vectorX = 5;
+        int vectorY = -50;
+        int rebote = (jPanel2.getHeight() / 2) * (-1);;
+
+        //Añadimos un timer
+        Timer timer = new Timer(25, new ActionListener() {
+            private int segundos = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //crearBotones(segundos);
+                segundos++;
+
+                buttons[segundos] = new javax.swing.JButton(String.valueOf(segundos));
+                buttons[segundos].setName("AAAA");
+                buttons[segundos].setText("AAAA");
+                buttons[segundos].setVisible(true);
+
+                //Posicion = posicion inicial + velocidad*tiempo + 1/2*a*t^2
+                //Si nos pasamos del eje Y, rebotamos
+                if ((Boton1.getLocation().y + vectorY * segundos + (10 / 5) * segundos * segundos) >= jPanel2.getHeight()) {                    
+                    buttons[segundos].setBounds(Boton1.getLocation().x + vectorX * segundos, Boton1.getLocation().y + (vectorY + rebote) * segundos + (10 / 2) * segundos * segundos, 120, 40);
+                    jPanel2.add(buttons[segundos]);
+                } else {
+                    buttons[segundos].setBounds(Boton1.getLocation().x + vectorX * segundos, Boton1.getLocation().y + (vectorY + 0) * segundos + (10 / 2) * segundos * segundos, 120, 40);
+                    jPanel2.add(buttons[segundos]);
+                }
+
+                jPanel2.repaint();
+
+            }
+        });
+
+        if (Cont == 4) {
+            Titulo2.setText("Deja de pulsar");
+        } else if (Cont == 8) {
+            Titulo2.setText("Persigue al otro boton");
+        } else if (Cont == 12) {
+            Titulo2.setText("Por favor para");
+        } else if (Cont == 16) {
+            Titulo2.setText("No me encuentro bien :S");
+        } else if (Cont == 20) {
+            Titulo2.setText("Bluarggh!");
+
+            timer.start();
+        }
+
     }//GEN-LAST:event_Boton1ActionPerformed
+
+    public void crearBotones(int i) {
+        buttons[i] = new javax.swing.JButton(String.valueOf(i));
+        buttons[i].setName("AAAAA");
+        buttons[i].setText("AAAA");
+        buttons[i].setVisible(true);
+
+        buttons[i].setBounds((jPanel2.getWidth() / 2) + (1 + i) * 10, (jPanel2.getHeight() / 2) + (1 + i) * 10, 120, 40);
+        jPanel2.add(buttons[i]);
+        jPanel2.repaint();
+    }
 
     /**
      * @param args the command line arguments
@@ -212,6 +278,7 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo2;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+    javax.swing.JButton[] buttons = new javax.swing.JButton[100];
 
     private void atributosEspeciales() {
         Titulo2.setVisible(false);
