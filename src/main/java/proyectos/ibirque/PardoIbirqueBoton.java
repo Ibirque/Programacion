@@ -5,7 +5,11 @@
 package proyectos.ibirque;
 
 import java.awt.Dimension;
+import java.awt.MouseInfo;
+import java.awt.PointerInfo;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,6 +22,7 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
      */
     public PardoIbirqueBoton() {
         initComponents();
+        atributosEspeciales();
     }
 
     /**
@@ -30,9 +35,10 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        Titulo = new javax.swing.JLabel();
+        Titulo2 = new javax.swing.JLabel();
         Boton1 = new javax.swing.JButton();
         Boton2 = new javax.swing.JButton();
+        Titulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -42,11 +48,12 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(102, 153, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        Titulo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
-        Titulo.setText("¿Aprobare el M03?");
+        Titulo2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        Titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo2.setText("La fe mueve montañas");
 
         Boton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        Boton1.setText("Jaja, no");
+        Boton1.setText("¡jamás!");
         Boton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton1ActionPerformed(evt);
@@ -66,31 +73,39 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
             }
         });
 
+        Titulo1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        Titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo1.setText("¿Aprobare el M03?");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(Boton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188)
-                .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addGap(54, 54, 54)
+                .addComponent(Boton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
+                .addContainerGap()
+                .addComponent(Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Boton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(169, Short.MAX_VALUE))
+                    .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -112,25 +127,46 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton2ActionPerformed
 
     private void Boton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton2MouseEntered
-        //Queremos que el boton se vaya moviendo        
+        //Queremos que el boton se vaya moviendo
+        PointerInfo M = MouseInfo.getPointerInfo();
 
-        //Primero necesitamos saber el tamaño de nuestra ventana
-        // define the range
+        //Primero necesitamos saber el tamaño de nuestra ventana, lo obtenemos con getWidth y getHeight
+        int randX = (int) (Math.random() * (getWidth() - Boton2.getWidth())) + 1;
+        //Le restamos 40 mas para que no se nos quede bajo la barra de inicio en caso de maximizarlo
+        int randY = (int) (Math.random() * (getHeight() - Boton2.getHeight() - 40)) + 1;
 
-        int randX = (int) (Math.random() *(getWidth()-Boton2.getWidth())) + 1;
-        int randY = (int) (Math.random() *(getHeight()-Boton2.getHeight() -40)) + 1;
-        
-        Boton2.setBounds(randX, randY, 110, 41);
-        jPanel2.add(Boton2);
-        
-        System.out.println("X: " + randX);
-        System.out.println("Y: " + randY);
+        //Esta sección se encarga de comprobar que Boton2 jamas caiga dentro de los bounds de boton1
+        if (randX >= (Boton1.getBounds().x - Boton2.getWidth())
+                && randX <= Boton1.getBounds().x + Boton1.getWidth()
+                && randY >= (Boton1.getBounds().y - Boton2.getHeight())
+                && randY <= Boton1.getBounds().y + Boton1.getHeight()) {
+
+            Boton2.setBounds(Boton1.getBounds().x + 120, randY, 120, 40);
+            jPanel2.add(Boton2);
+            
+            //Queremos evitar todo lo posible generarlo cerca del raton
+            if ( Boton2.getBounds().x >= (M.getLocation().x - Boton2.getWidth())
+                    && Boton2.getBounds().x <= M.getLocation().x + Boton1.getWidth()
+                    && Boton2.getBounds().y >= (M.getLocation().y - Boton2.getHeight())
+                    && Boton2.getBounds().y <= M.getLocation().y + Boton1.getHeight()) {
+                Boton2.setBounds(M.getLocation().x, M.getLocation().y-42, 120, 40);
+                jPanel2.add(Boton2);
+            }
+        } else {
+            Boton2.setBounds(randX, randY, 120, 40);
+            jPanel2.add(Boton2);
+        }
 
 
     }//GEN-LAST:event_Boton2MouseEntered
 
     private void Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton1ActionPerformed
-        // TODO add your handling code here:
+        Titulo2.setVisible(true);
+        Boton1.setText("Persiguelo");
+        Boton2.setText("Atrapame");
+       
+        jPanel2.add(new JLabel(Boton1.getIcon()));
+        
     }//GEN-LAST:event_Boton1ActionPerformed
 
     /**
@@ -172,8 +208,13 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton1;
     private javax.swing.JButton Boton2;
-    private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel Titulo1;
+    private javax.swing.JLabel Titulo2;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    private void atributosEspeciales() {
+        Titulo2.setVisible(false);
+    }
 
 }
