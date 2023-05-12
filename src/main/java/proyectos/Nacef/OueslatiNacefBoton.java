@@ -4,6 +4,10 @@
  */
 package proyectos.Nacef;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Alumno
@@ -15,6 +19,7 @@ public class OueslatiNacefBoton extends javax.swing.JFrame {
      */
     public OueslatiNacefBoton() {
         initComponents();
+        remove();
     }
 
     /**
@@ -27,17 +32,18 @@ public class OueslatiNacefBoton extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        text = new javax.swing.JLabel();
         button2 = new javax.swing.JButton();
         button1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel.setBackground(new java.awt.Color(0, 153, 203));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("¿Aprobaré el M03?");
+        text.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        text.setForeground(new java.awt.Color(255, 255, 255));
+        text.setText("La fe mueve montañas");
 
         button2.setBackground(new java.awt.Color(228, 254, 255));
         button2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -69,37 +75,51 @@ public class OueslatiNacefBoton extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("¿Aprobaré el M03?");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jLabel1)
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(text)
+                .addContainerGap(112, Short.MAX_VALUE))
             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelLayout.createSequentialGroup()
                     .addGap(47, 47, 47)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(277, Short.MAX_VALUE)))
+            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                    .addContainerGap(96, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(89, 89, 89)))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addGap(73, 73, 73)
+                .addGap(153, 153, 153)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(text)
+                .addGap(25, 25, 25))
             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                     .addContainerGap(154, Short.MAX_VALUE)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(123, 123, 123)))
+            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(jLabel2)
+                    .addContainerGap(226, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,18 +141,18 @@ public class OueslatiNacefBoton extends javax.swing.JFrame {
     }//GEN-LAST:event_button2ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        
+        text.setVisible(true);
     }//GEN-LAST:event_button1ActionPerformed
 
     private void button2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseEntered
-        //int x = (int)( Math.random()*150 + 1);
-        //int y = (int) (Math.random() *150 + 1);
-        button2.setLocation(150, 150);
-        panel.add(button2);
+        int x = (int)( Math.random()*150 + 1);
+        int y = (int) (Math.random() *150 + 1);
+        button2.setLocation(x, y);
+
     }//GEN-LAST:event_button2MouseEntered
 
     private void button2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseExited
-       button2.getLocation();
+       
     }//GEN-LAST:event_button2MouseExited
 
     /**
@@ -169,11 +189,16 @@ public class OueslatiNacefBoton extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void remove(){
+        text.setVisible(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button1;
     private javax.swing.JButton button2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel panel;
+    private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 }
