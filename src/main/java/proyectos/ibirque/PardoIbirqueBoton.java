@@ -175,36 +175,46 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
         Boton2.setText("Atrapame");
 
         //Vectores
-        int vectorX = 5;
-        int vectorY = -50;
-        int rebote = (jPanel2.getHeight() / 2) * (-1);;
+        int vectorX = 8;
+        int vectorY = 10;
+        //int rebote = (jPanel2.getHeight() / 2) * (-1);
 
         //Añadimos un timer
         Timer timer = new Timer(25, new ActionListener() {
             private int segundos = 0;
+            private int segundoAuxiliar = 0;
+            //Posición inicial en el eje Y
+            private int y0 = Boton1.getLocation().y;
+            // Velocidad inicial en el eje Y
+            private int v0y = vectorY;
+            //Gravedad
+            private int g = 9;
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //crearBotones(segundos);
                 segundos++;
+                //Posicion = posicion inicial + velocidad*tiempo + 1/2*a*t^2
+                //Si nos pasamos del eje Y, rebotamos
+                // Verificar si nos pasamos del eje Y
+                int posY = y0 + v0y * segundos + (1 / 2) * g * segundos * segundos;
+                if (posY >= jPanel2.getHeight()) {
+                    // Rebote
+                    segundoAuxiliar = segundos;
+                    segundos = 0;
+                    y0 = jPanel2.getHeight(); // Posición inicial del rebote en el límite inferior
+                    v0y = -v0y; // Cambio de dirección de la velocidad (rebote)
+
+                    posY = y0 + v0y * segundos + (1 / 2) * g * segundos * segundos;
+                }
 
                 buttons[segundos] = new javax.swing.JButton(String.valueOf(segundos));
                 buttons[segundos].setName("AAAA");
                 buttons[segundos].setText("AAAA");
                 buttons[segundos].setVisible(true);
 
-                //Posicion = posicion inicial + velocidad*tiempo + 1/2*a*t^2
-                //Si nos pasamos del eje Y, rebotamos
-                if ((Boton1.getLocation().y + vectorY * segundos + (10 / 5) * segundos * segundos) >= jPanel2.getHeight()) {                    
-                    buttons[segundos].setBounds(Boton1.getLocation().x + vectorX * segundos, Boton1.getLocation().y + (vectorY + rebote) * segundos + (10 / 2) * segundos * segundos, 120, 40);
-                    jPanel2.add(buttons[segundos]);
-                } else {
-                    buttons[segundos].setBounds(Boton1.getLocation().x + vectorX * segundos, Boton1.getLocation().y + (vectorY + 0) * segundos + (10 / 2) * segundos * segundos, 120, 40);
-                    jPanel2.add(buttons[segundos]);
-                }
-
+                buttons[segundos].setBounds(Boton1.getLocation().x + vectorX * (segundos+segundoAuxiliar), posY, 120, 40);
+                jPanel2.add(buttons[segundos]);
                 jPanel2.repaint();
-
             }
         });
 
@@ -278,7 +288,7 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo2;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-    javax.swing.JButton[] buttons = new javax.swing.JButton[100];
+    javax.swing.JButton[] buttons = new javax.swing.JButton[250];
 
     private void atributosEspeciales() {
         Titulo2.setVisible(false);
