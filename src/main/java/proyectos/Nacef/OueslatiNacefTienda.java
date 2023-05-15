@@ -4,15 +4,17 @@
  */
 package proyectos.Nacef;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Alumno
  */
 public class OueslatiNacefTienda extends javax.swing.JFrame {
 
-    /**
-     * Creates new form OueslatiNacefTienda
-     */
+    private ArrayList<String> items;
+    private double importeAcumulado;
+
     public OueslatiNacefTienda() {
         initComponents();
     }
@@ -35,7 +37,7 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
         textArea = new javax.swing.JTextArea();
         button = new javax.swing.JButton();
         buttonTotal = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        label1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +52,6 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
         precio.setText("Precio: ");
 
         textArea.setColumns(20);
-        textArea.setForeground(new java.awt.Color(153, 153, 153));
         textArea.setRows(5);
         textArea.setText("Artículos comprados: ");
         jScrollPane1.setViewportView(textArea);
@@ -64,6 +65,11 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
         button.setToolTipText("");
         button.setActionCommand("button");
         button.setBorder(null);
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonActionPerformed(evt);
+            }
+        });
 
         buttonTotal.setBackground(new java.awt.Color(19, 243, 243));
         buttonTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -78,8 +84,8 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(172, 207, 222));
-        jLabel1.setText("...importa parcial");
+        label1.setForeground(new java.awt.Color(172, 207, 222));
+        label1.setText("...importa parcial");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,7 +108,7 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
                             .addComponent(textfieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
@@ -119,7 +125,7 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel1)
+                        .addComponent(label1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                         .addComponent(buttonTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
@@ -141,12 +147,50 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTotalActionPerformed
-        // TODO add your handling code here:
+        mostrarTotal();
+
+        items = new ArrayList<>();
+        importeAcumulado = 0;
     }//GEN-LAST:event_buttonTotalActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
+        agregarArticulo();
+    }//GEN-LAST:event_buttonActionPerformed
+
+    private void agregarArticulo() {
+        String nombreArticulo = textfieldArticulo.getText();
+        double precioArticulo = Double.parseDouble(textfieldPrecio.getText());
+        importeAcumulado += precioArticulo;
+
+        items.add(nombreArticulo);
+
+        textArea.append("Nombre: " + nombreArticulo + " Precio: " + precioArticulo + "\n");
+        textArea.setText("Nombre del articulo: " + nombreArticulo + " / Precio del articulo: " + importeAcumulado);
+        
+        label1.setText("Total:" + importeAcumulado);
+        textfieldArticulo.setText("");
+        textfieldPrecio.setText("");
+    }
+
+    private void mostrarTotal() {
+        textArea.append("\n--- Total ---\n");
+        for (int i = 0; i < items.size(); i++) {
+            String articulo = items.get(i);
+            textArea.append("Nombre: " + articulo + " Precio: " + precio + "\n");
+        }
+
+        double iva = importeAcumulado * 0.16;
+        double precioTotal = importeAcumulado + iva;
+
+        textArea.append("\nImporte total: " + importeAcumulado);
+        textArea.append("\nIVA: " + iva);
+        textArea.append("\nPrecio con IVA: " + precioTotal);
+
+
+        button.setEnabled(false);
+        buttonTotal.setEnabled(false);
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -183,9 +227,9 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
     private javax.swing.JLabel articulo;
     private javax.swing.JButton button;
     private javax.swing.JButton buttonTotal;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label1;
     private javax.swing.JLabel precio;
     private javax.swing.JTextArea textArea;
     private javax.swing.JTextField textfieldArticulo;
