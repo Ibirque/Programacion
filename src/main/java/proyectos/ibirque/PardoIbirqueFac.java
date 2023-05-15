@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject1;
+package proyectos.ibirque;
 
 /*OBJETIVOS*/
  /*
@@ -44,7 +44,8 @@ public class PardoIbirqueFac {
         return this.precio / this.cantidad;
     }
     public float iva(){
-        return this.precio = this.precio * 1.21f;
+        float precio2 = 0;
+        return precio2 = this.precio * 1.21f;
     }
     public float descuento(){
         System.out.println("Se ha aplicado un descuento!");
@@ -77,11 +78,15 @@ public class PardoIbirqueFac {
         return precio;
     }
 
+    /*
+    @Override
+    public String toStringOriginal() {
+        return "item=" + item + ", cantidad=" + cantidad + ", precio=" + precio + ", precio unitario=" + precioUnitario() +", precio con IVA=" + iva() +'}';
+    }
+    */
     @Override
     public String toString() {
-        return "{" + "item=" + item + ", cantidad=" + cantidad + ", precio=" + precio + ", precio unitario=" + precioUnitario() +", precio con IVA=" + iva() +'}';
+        return "ITEM:" + item +", PRECIO:" + precio +", Con IVA=" + iva();
     }
-
-
 
 }

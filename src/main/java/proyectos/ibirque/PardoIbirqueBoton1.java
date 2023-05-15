@@ -19,14 +19,14 @@ import javax.swing.Timer;
  *
  * @author Alumno
  */
-public class PardoIbirqueBoton extends javax.swing.JFrame {
+public class PardoIbirqueBoton1 extends javax.swing.JFrame {
 
     int Cont = 0;
 
     /**
      * Creates new form PardoIbirqueBoton
      */
-    public PardoIbirqueBoton() {
+    public PardoIbirqueBoton1() {
         initComponents();
         atributosEspeciales();
     }
@@ -194,15 +194,16 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 segundos++;
                 //Posicion = posicion inicial + velocidad*tiempo + 1/2*a*t^2
-                //Si nos pasamos del eje Y, rebotamos
-                // Verificar si nos pasamos del eje Y
+                //verificar si nos pasamos del eje Y, si nos pasamos del eje Y, rebotamos
                 int posY = y0 + v0y * segundos + (1 / 2) * g * segundos * segundos;
                 if (posY >= jPanel2.getHeight()) {
-                    // Rebote
+                    //rebote
                     segundoAuxiliar = segundos;
                     segundos = 0;
-                    y0 = jPanel2.getHeight(); // Posición inicial del rebote en el límite inferior
-                    v0y = -v0y; // Cambio de dirección de la velocidad (rebote)
+                    //posición inicial del rebote en el límite inferior
+                    y0 = jPanel2.getHeight(); 
+                    //ccambio de dirección de la velocidad (rebote)
+                    v0y = -v0y; 
 
                     posY = y0 + v0y * segundos + (1 / 2) * g * segundos * segundos;
                 }
@@ -262,20 +263,21 @@ public class PardoIbirqueBoton extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PardoIbirqueBoton().setVisible(true);
+                new PardoIbirqueBoton1().setVisible(true);
             }
         });
 

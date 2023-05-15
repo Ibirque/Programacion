@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject1;
+package proyectos.ibirque;
 
 import java.util.ArrayList;
 import java.util.Scanner;
