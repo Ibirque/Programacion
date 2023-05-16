@@ -12,8 +12,9 @@ import java.util.ArrayList;
  */
 public class OueslatiNacefTienda extends javax.swing.JFrame {
 
-    private ArrayList<String> items;
-    private double importeAcumulado;
+    ArrayList<String> items = new ArrayList();
+    ArrayList<Double> precios = new ArrayList();
+    double importeAcumulado;
 
     public OueslatiNacefTienda() {
         initComponents();
@@ -38,6 +39,8 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
         button = new javax.swing.JButton();
         buttonTotal = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
+        comboBox = new javax.swing.JComboBox<>();
+        buttonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +90,24 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
         label1.setForeground(new java.awt.Color(172, 207, 222));
         label1.setText("...importa parcial");
 
+        buttonEliminar.setBackground(new java.awt.Color(255, 153, 153));
+        buttonEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        buttonEliminar.setText("Eliminar");
+        buttonEliminar.setToolTipText("");
+        buttonEliminar.setActionCommand("button");
+        buttonEliminar.setBorder(null);
+        buttonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonEliminarMouseClicked(evt);
+            }
+        });
+        buttonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,15 +121,16 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
                         .addComponent(textfieldArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(precio)
-                            .addGap(18, 18, 18)
-                            .addComponent(textfieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(precio)
+                        .addGap(18, 18, 18)
+                        .addComponent(textfieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,9 +146,13 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(label1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(buttonTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
                 .addGap(55, 55, 55))
@@ -149,34 +175,64 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
     private void buttonTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTotalActionPerformed
         mostrarTotal();
 
-        items = new ArrayList<>();
-        importeAcumulado = 0;
     }//GEN-LAST:event_buttonTotalActionPerformed
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         agregarArticulo();
     }//GEN-LAST:event_buttonActionPerformed
 
+    private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEliminarActionPerformed
+
+    private void buttonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonEliminarMouseClicked
+        //Queremos borroar todos
+
+        int id = comboBox.getSelectedIndex();
+        importeAcumulado = importeAcumulado - precios.get(id);
+        label1.setText("Total:" + importeAcumulado);
+        comboBox.removeItemAt(id);
+        items.remove(id);
+        precio.remove(id);
+        
+        mostrarTotal();
+    }//GEN-LAST:event_buttonEliminarMouseClicked
+
+    private void imrprimir() {
+        for (int i = 0; i < items.size(); i++) {
+            textArea.append(items.get(i).toString() + "\n");
+        }
+
+        importeAcumulado = 0;
+        for (int i = 0; i < precios.size(); i++) {
+            importeAcumulado = importeAcumulado + precios.get(i);
+        }
+        label1.setText("Total:" + importeAcumulado);
+    }
+
     private void agregarArticulo() {
         String nombreArticulo = textfieldArticulo.getText();
         double precioArticulo = Double.parseDouble(textfieldPrecio.getText());
-        importeAcumulado += precioArticulo;
 
         items.add(nombreArticulo);
+        precios.add(precioArticulo);
 
-        textArea.append("Nombre: " + nombreArticulo + " Precio: " + precioArticulo + "\n");
-        textArea.setText("Nombre del articulo: " + nombreArticulo + " / Precio del articulo: " + importeAcumulado);
-        
-        label1.setText("Total:" + importeAcumulado);
+        //textArea.append("Nombre: " + nombreArticulo + " Precio: " + precioArticulo + "\n");
+        textArea.append("\nArticulo: " + nombreArticulo);
+
         textfieldArticulo.setText("");
         textfieldPrecio.setText("");
+        comboBox.addItem(nombreArticulo);
+        textArea.setText("");
+        imrprimir();
     }
 
     private void mostrarTotal() {
+        textArea.setText("");
         textArea.append("\n--- Total ---\n");
         for (int i = 0; i < items.size(); i++) {
-            String articulo = items.get(i);
-            textArea.append("Nombre: " + articulo + " Precio: " + precio + "\n");
+            //textArea.append("Nombre: " + articulo + " Precio: " + precio + "\n");
+            textArea.append(items.get(i) + "\n");
         }
 
         double iva = importeAcumulado * 0.16;
@@ -186,9 +242,6 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
         textArea.append("\nIVA: " + iva);
         textArea.append("\nPrecio con IVA: " + precioTotal);
 
-
-        button.setEnabled(false);
-        buttonTotal.setEnabled(false);
     }
 
     public static void main(String args[]) {
@@ -226,7 +279,9 @@ public class OueslatiNacefTienda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel articulo;
     private javax.swing.JButton button;
+    private javax.swing.JButton buttonEliminar;
     private javax.swing.JButton buttonTotal;
+    private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
