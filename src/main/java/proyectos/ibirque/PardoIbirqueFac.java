@@ -86,7 +86,7 @@ public class PardoIbirqueFac {
     */
     @Override
     public String toString() {
-        return "ITEM:" + item +", PRECIO:" + precio +", Con IVA=" + iva();
+        return "ITEM: " + item +", PRECIO: " + precio +", Con IVA: " + iva();
     }
 
 }

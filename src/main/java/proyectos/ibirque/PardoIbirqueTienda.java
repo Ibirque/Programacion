@@ -1,5 +1,6 @@
 package proyectos.ibirque;
 
+import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 
@@ -45,7 +46,6 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
         Boton1 = new javax.swing.JButton();
         ComboBox1 = new javax.swing.JComboBox<>();
         Boton3 = new javax.swing.JButton();
-        Etiqueta4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +56,11 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
         Boton2.setBackground(new java.awt.Color(51, 255, 204));
         Boton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Boton2.setText("Total");
+        Boton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton2MouseClicked(evt);
+            }
+        });
 
         TextArea1.setColumns(20);
         TextArea1.setRows(5);
@@ -90,9 +95,6 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
             }
         });
 
-        Etiqueta4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        Etiqueta4.setText("Total con IVA:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,8 +113,7 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Boton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(ComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 133, Short.MAX_VALUE)
-                    .addComponent(Etiqueta4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 133, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -139,9 +140,7 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
                     .addComponent(Etiqueta2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(Etiqueta3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Etiqueta4)
-                .addGap(15, 15, 15)
+                .addGap(37, 37, 37)
                 .addComponent(ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Boton3)
@@ -180,7 +179,6 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
     private void Boton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton1MouseClicked
         // Boton 1 se encarga de registrar todos los datos        
         Registrar();
-        Imprimir();
     }//GEN-LAST:event_Boton1MouseClicked
 
     private void ComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox1ActionPerformed
@@ -194,8 +192,11 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
         ComboBox1.removeItemAt(idCombo);
         lista.remove((idCombo));        
         //limpiamos la pantalla
-        Imprimir();
     }//GEN-LAST:event_Boton3MouseClicked
+
+    private void Boton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton2MouseClicked
+        Imprimir();
+    }//GEN-LAST:event_Boton2MouseClicked
 
     public void Registrar() {
         //Variables
@@ -209,13 +210,14 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
             try {
                 float Area2Num = Float.parseFloat(Area2);
                 
-                 PardoIbirqueFac x = new PardoIbirqueFac("", 1, 0); //Cantidad a 1 ya que no hace falta para este ejercicio
+                PardoIbirqueFac x = new PardoIbirqueFac("", 1, 0); //Cantidad a 1 ya que no hace falta para este ejercicio
        
                 //Ahora tenemos los dos valores, llamamos a nuestro array list
                 x.setItem(Area1);
                 x.setPrecio(Area2Num);
                 lista.add(x);
                 ComboBox1.addItem(Area1);
+                TextArea1.setText("Articulo: "+x.getItem());
             } catch (NumberFormatException e) {
                 TextArea1.setText("El valor de Area2 debe ser un número valido");
             }
@@ -232,9 +234,11 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
             //Ya que usamos el mismo bucle, vamos a crear aqui la funcion de actualziar el precio
             precioTotal = precioTotal + lista.get(i).getPrecio();
         }
-
         Etiqueta3.setText("Total: " + precioTotal);
-        Etiqueta4.setText("Total con IVA: " + precioTotal*1.21f);
+        TextArea1.append("IVA: 20%\n");        
+        TextArea1.append("***Total con IVA: " + precioTotal*1.21f+"***");
+        
+        
     }
 
     public static void main(String args[]) {
@@ -277,7 +281,6 @@ public class PardoIbirqueTienda extends javax.swing.JFrame {
     private javax.swing.JLabel Etiqueta1;
     private javax.swing.JLabel Etiqueta2;
     private javax.swing.JLabel Etiqueta3;
-    private javax.swing.JLabel Etiqueta4;
     private javax.swing.JTextArea TextArea1;
     private javax.swing.JTextField TextField1;
     private javax.swing.JTextField TextField2;

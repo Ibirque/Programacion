@@ -19,14 +19,14 @@ import javax.swing.Timer;
  *
  * @author Alumno
  */
-public class PardoIbirqueBoton1 extends javax.swing.JFrame {
+public class PardoIbirqueBoton extends javax.swing.JFrame {
 
     int Cont = 0;
 
     /**
      * Creates new form PardoIbirqueBoton
      */
-    public PardoIbirqueBoton1() {
+    public PardoIbirqueBoton() {
         initComponents();
         atributosEspeciales();
     }
@@ -263,21 +263,23 @@ public class PardoIbirqueBoton1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PardoIbirqueBoton1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PardoIbirqueBoton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PardoIbirqueBoton1().setVisible(true);
+                new PardoIbirqueBoton().setVisible(true);
             }
         });
 
