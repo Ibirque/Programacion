@@ -276,7 +276,7 @@ public class VigenerePardoIbirqueMain {
     }
 
     //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    // Función para cifrar el texto
+    //Función para cifrar el texto
     public String cifrar(String texto) throws Exception {
         try {
             //Generamos una instancia de Cipher
