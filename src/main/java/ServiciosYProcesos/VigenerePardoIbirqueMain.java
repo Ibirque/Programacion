@@ -29,6 +29,10 @@ public class VigenerePardoIbirqueMain {
     //Creamos un abecedario global para facil acceso de las funciones
     public char[] letras = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
+    //claves
+    private String clavePublica;
+    private String clavePrivada;
+    
     public static void main(String[] args) {
         VigenerePardoIbirqueMain prog = new VigenerePardoIbirqueMain();
         prog.inicio();
@@ -87,7 +91,10 @@ public class VigenerePardoIbirqueMain {
 
                         System.out.println(FuncionDesencriptado(miTexto, miClave));
                     }
-                    case 3 -> { //Salir
+                    case 3 ->{
+                        generarClaves();
+                    }
+                    case 4 -> { //Salir
                         System.out.println("Que tengas un buen dia");
                         bandera = true;
                     }
@@ -110,7 +117,8 @@ public class VigenerePardoIbirqueMain {
                            Elige que quieres hacer
                            [1] - Encriptar
                            [2] - Descifrar
-                           [3] - Salir
+                           [4] - Generar claves
+                           [4] - Salir
                            ***********************
                            """);
     }
@@ -134,6 +142,7 @@ public class VigenerePardoIbirqueMain {
         return a;
         */
 
+        //Esta seccion esta hecha por chatGPT, he sido incapaz de corregir el error que me daba el texto anterior
         StringBuilder resultado = new StringBuilder();
 
         for (int i = 0; i < miTexto.length(); i++) {
@@ -157,6 +166,7 @@ public class VigenerePardoIbirqueMain {
         }
 
         return resultado.toString();
+        //FIN DE LA SECCION
 
     }
 
@@ -199,6 +209,10 @@ public class VigenerePardoIbirqueMain {
         }
 
         return a;
+    }
+
+    private void generarClaves() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
