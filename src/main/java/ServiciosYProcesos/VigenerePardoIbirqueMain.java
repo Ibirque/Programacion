@@ -2,6 +2,12 @@ package ServiciosYProcesos;
 
 import java.util.Scanner;
 
+//imports para las claves
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
 /**
  * @author Ibirque Pardo 2º DAM
  */
@@ -209,6 +215,64 @@ public class VigenerePardoIbirqueMain {
         }
 
         return a;
+    }
+    
+    
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    
+    // Constructor
+    public VigenerePardoIbirqueMain() throws Exception {
+        // Generamos las claves
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(2048);
+        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+
+        // Guardamos las claves
+        publicKey = keyPair.getPublic();
+        privateKey = keyPair.getPrivate();
+    }
+
+    // Función para cifrar el texto
+    public String cifrar(String texto) throws Exception {
+        // Generamos una clave simétrica a partir de la clave pública
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+
+        // Ciframos el texto
+        byte[] bytesCifrados = cipher.doFinal(texto.getBytes());
+
+        // Devolvemos el texto cifrado
+        return new String(bytesCifrados);
+    }
+
+    // Función para descifrar el texto
+    public String descifrar(String textoCifrado) throws Exception {
+        // Generamos una clave simétrica a partir de la clave privada
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.DECRYPT_MODE, privateKey);
+
+        // Desciframos el texto
+        byte[] bytesDescifrados = cipher.doFinal(textoCifrado.getBytes());
+
+        // Devolvemos el texto descifrado
+        return new String(bytesDescifrados);
+    }
+
+    public static void main(String[] args) throws Exception {
+        VigenerePardoIbirqueMain vigenere = new VigenerePardoIbirqueMain();
+
+        // Generamos un texto
+        String texto = "Este es un texto de ejemplo";
+
+        // Ciframos el texto
+        String textoCifrado = vigenere.cifrar(texto);
+
+        // Desciframos el texto
+        String textoDescifrado = vigenere.descifrar(textoCifrado);
+
+        // Imprimimos el texto cifrado y descifrado
+        System.out.println("Texto cifrado: " + textoCifrado);
+        System.out.println("Texto descifrado: " + textoDescifrado);
     }
 
     private void generarClaves() {
