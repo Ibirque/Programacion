@@ -7,6 +7,8 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+//imp. para cifrado
+import javax.crypto.Cipher;
 
 /**
  * @author Ibirque Pardo 2º DAM
@@ -36,9 +38,9 @@ public class VigenerePardoIbirqueMain {
     public char[] letras = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
     //claves
-    private String clavePublica;
-    private String clavePrivada;
-    
+    private PublicKey clavePublica;
+    private PrivateKey clavePrivada;
+
     public static void main(String[] args) {
         VigenerePardoIbirqueMain prog = new VigenerePardoIbirqueMain();
         prog.inicio();
@@ -50,6 +52,7 @@ public class VigenerePardoIbirqueMain {
 
         // flag
         boolean bandera = false;
+        boolean bandera2 = false;
         int entrada;
 
         //Bucle infinito hasta que se cumpla el flag
@@ -68,9 +71,9 @@ public class VigenerePardoIbirqueMain {
                 switch (entrada) {
                     case 1 -> {
                         //Codificar
-                        Scanner ent2 = new Scanner(System.in);
 
                         //Recogemos input
+                        Scanner ent2 = new Scanner(System.in);
                         System.out.println("Paso 1 - Introduce el texto");
                         String miTexto;
                         miTexto = ent2.nextLine().toLowerCase();
@@ -84,9 +87,9 @@ public class VigenerePardoIbirqueMain {
                     }
                     case 2 -> {
                         //Desencriptar
-                        Scanner ent3 = new Scanner(System.in);
 
                         //Recogemos input
+                        Scanner ent3 = new Scanner(System.in);
                         System.out.println("Paso 1 - Introduce el texto");
                         String miTexto;
                         miTexto = ent3.nextLine().toLowerCase();
@@ -97,8 +100,62 @@ public class VigenerePardoIbirqueMain {
 
                         System.out.println(FuncionDesencriptado(miTexto, miClave));
                     }
-                    case 3 ->{
-                        generarClaves();
+                    case 3 -> {
+                        //Claves
+
+                        //Recogemos input
+                        Scanner ent4 = new Scanner(System.in);
+                        System.out.println("Paso 1 - Generar clave pública (1) o privada (2), para retroceder (3)");
+
+                        do {
+                            if (ent4.hasNextInt()) {
+                                int selector = ent4.nextInt();
+                                switch (selector) {
+                                    case 1 -> {
+                                        //La publica
+                                        generarClaves(selector);
+                                        Scanner ent5 = new Scanner(System.in);
+                                        System.out.println("Introduce el texto a cifrar:");
+
+                                        String texto = ent5.nextLine().toLowerCase();
+                                        try {
+                                            String textoCifrado = cifrar(texto);
+                                            System.out.println("Texto cifrado: " + textoCifrado);
+                                        } catch (Exception e) {
+                                            System.out.println("Error al cifrar el texto: " + e.getMessage());
+                                        }
+
+                                        bandera2 = true;
+                                    }
+                                    case 2 -> {
+                                        //La privada
+                                        generarClaves(selector);
+                                        Scanner ent5 = new Scanner(System.in);
+                                        System.out.println("Introduce el texto a descifrar:");
+
+                                        String textoCifrado = ent5.nextLine().toLowerCase();
+                                        try {
+                                            String textoDescifrado = descifrar(textoCifrado);
+                                            System.out.println("Texto descifrado: " + textoDescifrado);
+                                        } catch (Exception e) {
+                                            System.out.println("Error al descifrar el texto: " + e.getMessage());
+                                        }
+
+                                        bandera2 = true;
+                                    }
+                                    case 3 -> {
+                                        bandera2 = true;
+                                    }
+                                    default -> {
+                                        System.out.println("Por favor, introduce un número válido");
+                                        ent4.next();
+                                    }
+                                }
+                            }
+
+                        } while (!bandera2);
+
+                        //Ahora tenemos la clave registrada, debemos solicitar un texto a cifrar o descifrar
                     }
                     case 4 -> { //Salir
                         System.out.println("Que tengas un buen dia");
@@ -123,7 +180,7 @@ public class VigenerePardoIbirqueMain {
                            Elige que quieres hacer
                            [1] - Encriptar
                            [2] - Descifrar
-                           [4] - Generar claves
+                           [3] - Generar claves
                            [4] - Salir
                            ***********************
                            """);
@@ -146,8 +203,9 @@ public class VigenerePardoIbirqueMain {
         }
 
         return a;
-        */
+         */
 
+        //Seccion GPT
         //Esta seccion esta hecha por chatGPT, he sido incapaz de corregir el error que me daba el texto anterior
         StringBuilder resultado = new StringBuilder();
 
@@ -216,67 +274,63 @@ public class VigenerePardoIbirqueMain {
 
         return a;
     }
-    
-    
+
     //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    
-    // Constructor
-    public VigenerePardoIbirqueMain() throws Exception {
-        // Generamos las claves
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(2048);
-        KeyPair keyPair = keyPairGenerator.generateKeyPair();
-
-        // Guardamos las claves
-        publicKey = keyPair.getPublic();
-        privateKey = keyPair.getPrivate();
-    }
-
     // Función para cifrar el texto
     public String cifrar(String texto) throws Exception {
-        // Generamos una clave simétrica a partir de la clave pública
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        try {
+            //Generamos una instancia de Cipher
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "SunJCE");
+            cipher.init(Cipher.ENCRYPT_MODE, clavePublica);
 
-        // Ciframos el texto
-        byte[] bytesCifrados = cipher.doFinal(texto.getBytes());
+            //ciframos el texto
+            byte[] bytesCifrados = cipher.doFinal(texto.getBytes());
 
-        // Devolvemos el texto cifrado
-        return new String(bytesCifrados);
+            //devolvemos el texto cifrado
+            return new String(bytesCifrados);
+        } catch (Exception e) {
+            throw new Exception("Error al cifrar el texto: " + e.getMessage());
+        }
     }
 
     // Función para descifrar el texto
     public String descifrar(String textoCifrado) throws Exception {
-        // Generamos una clave simétrica a partir de la clave privada
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, privateKey);
+        try {
+            //Generamos una instancia de Cipher
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "SunJCE");
+            cipher.init(Cipher.DECRYPT_MODE, clavePrivada);
 
-        // Desciframos el texto
-        byte[] bytesDescifrados = cipher.doFinal(textoCifrado.getBytes());
+            //Desciframos el texto
+            byte[] bytesDescifrados = cipher.doFinal(textoCifrado.getBytes());
 
-        // Devolvemos el texto descifrado
-        return new String(bytesDescifrados);
+            //Devolvemos el texto descifrado
+            return new String(bytesDescifrados);
+        } catch (Exception e) {
+            throw new Exception("Error al descifrar el texto: " + e.getMessage());
+        }
     }
 
-    public static void main(String[] args) throws Exception {
-        VigenerePardoIbirqueMain vigenere = new VigenerePardoIbirqueMain();
+    private void generarClaves(int tipoClave) {
+        try {
+            //Generamos las claves
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(2048);
+            KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-        // Generamos un texto
-        String texto = "Este es un texto de ejemplo";
+            //Guardamos las claves
+            clavePublica = keyPair.getPublic();
+            clavePrivada = keyPair.getPrivate();
 
-        // Ciframos el texto
-        String textoCifrado = vigenere.cifrar(texto);
+            //Mostramos las claves
+            if (tipoClave == 1) {
+                System.out.println("Clave Pública Generada: " + clavePublica);
+            } else if (tipoClave == 2) {
+                System.out.println("Clave Privada Generada: " + clavePrivada);
+            }
 
-        // Desciframos el texto
-        String textoDescifrado = vigenere.descifrar(textoCifrado);
-
-        // Imprimimos el texto cifrado y descifrado
-        System.out.println("Texto cifrado: " + textoCifrado);
-        System.out.println("Texto descifrado: " + textoDescifrado);
-    }
-
-    private void generarClaves() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        } catch (Exception e) {
+            System.out.println("Error al generar claves: " + e.getMessage());
+        }
     }
 
 }
